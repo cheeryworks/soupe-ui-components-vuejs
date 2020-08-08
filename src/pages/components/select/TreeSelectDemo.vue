@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'soupe-ui-tree-select-demo'
+  name: 'soupe-ui-tree-select-demo',
 }
 </script>

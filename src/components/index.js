@@ -12,7 +12,7 @@ const components = {
   Table
 }
 
-const install = function(Vue) {
+const install = function (Vue) {
   for (let name in components) {
     let component = components[name]
 

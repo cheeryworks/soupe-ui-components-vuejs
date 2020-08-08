@@ -5,17 +5,11 @@
 </template>
 
 <script>
-
-export default {
-  name: 'App'
-}
+  export default {
+    name: 'App'
+  }
 </script>
 
 <style lang="scss">
-@import 'styles/app';
-
-html, body {
-  margin: 0;
-}
-
+  @import 'styles/app';
 </style>
