@@ -1,28 +1,28 @@
-import Introduction from "@/pages/components/Introduction";
-import SelectDemo from "@/pages/components/select/SelectDemo";
-import TreeSelectDemo from "@/pages/components/select/TreeSelectDemo";
-import TreeDemo from "@/pages/components/tree/TreeDemo";
-import TableDemo from "@/pages/components/table/TableDemo";
+import Introduction from '@/pages/components/Introduction'
+import SelectDemo from '@/pages/components/select/SelectDemo'
+import TreeSelectDemo from '@/pages/components/select/TreeSelectDemo'
+import TreeDemo from '@/pages/components/tree/TreeDemo'
+import TableDemo from '@/pages/components/table/TableDemo'
 
 const components = {
   Introduction,
   SelectDemo,
   TreeSelectDemo,
   TreeDemo,
-  TableDemo,
-};
+  TableDemo
+}
 
 const install = function (Vue) {
   for (let name in components) {
-    let component = components[name];
+    let component = components[name]
 
     if (component.name) {
-      name = component.name;
+      name = component.name
     }
 
-    Vue.component(name, component);
+    Vue.component(name, component)
   }
-};
+}
 
 export default {
   install,
@@ -30,5 +30,5 @@ export default {
   SelectDemo,
   TreeSelectDemo,
   TreeDemo,
-  TableDemo,
-};
+  TableDemo
+}

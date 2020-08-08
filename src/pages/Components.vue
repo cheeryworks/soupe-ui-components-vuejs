@@ -7,9 +7,9 @@
           <div class="hero-body px-0 py-0">
             <p class="panel-block"></p>
             <router-link
-              :to="{name: 'components'}"
+              :to="{ name: 'components' }"
               class="panel-block"
-              :class="{'is-active' : $route.name === 'components'}"
+              :class="{ 'is-active': $route.name === 'components' }"
             >
               <span class="panel-icon">
                 <i class="fas fa-angle-right" aria-hidden="true"></i>
@@ -18,10 +18,10 @@
             </router-link>
             <router-link
               v-for="demo of demos"
-              :to="{name: demo.key}"
+              :to="{ name: demo.key }"
               :key="demo.key"
               class="panel-block"
-              :class="{'is-active' : $route.name === demo.key}"
+              :class="{ 'is-active': $route.name === demo.key }"
             >
               <span class="panel-icon">
                 <i class="fas fa-angle-right" aria-hidden="true"></i>
@@ -42,42 +42,42 @@
   </default-layout>
 </template>
 <script>
-import DefaultLayout from "@/layouts/DefaultLayout";
-import Introduction from "@/pages/components/Introduction";
+  import DefaultLayout from '@/layouts/DefaultLayout'
+  import Introduction from '@/pages/components/Introduction'
 
-export default {
-  components: { DefaultLayout, Introduction },
-  data() {
-    return {
-      demos: [],
-    };
-  },
-  mounted() {
-    let demosRouteConfig = this.getCurrentRouteConfig(
-      this.$router.options.routes
-    );
-
-    for (let demoRouteConfig of demosRouteConfig.children) {
-      let demo = {};
-
-      demo.key = demoRouteConfig.name;
-      demo.name = demoRouteConfig.meta.displayName;
-
-      this.demos.push(demo);
-    }
-  },
-  methods: {
-    getCurrentRouteConfig(routeConfigs) {
-      for (let routeConfig of routeConfigs) {
-        if (routeConfig.name === "components") {
-          return routeConfig;
-        }
-
-        if (routeConfig.children) {
-          return this.getCurrentRouteConfig(routeConfig.children);
-        }
+  export default {
+    components: { DefaultLayout, Introduction },
+    data() {
+      return {
+        demos: []
       }
     },
-  },
-};
+    mounted() {
+      let demosRouteConfig = this.getCurrentRouteConfig(
+        this.$router.options.routes
+      )
+
+      for (let demoRouteConfig of demosRouteConfig.children) {
+        let demo = {}
+
+        demo.key = demoRouteConfig.name
+        demo.name = demoRouteConfig.meta.displayName
+
+        this.demos.push(demo)
+      }
+    },
+    methods: {
+      getCurrentRouteConfig(routeConfigs) {
+        for (let routeConfig of routeConfigs) {
+          if (routeConfig.name === 'components') {
+            return routeConfig
+          }
+
+          if (routeConfig.children) {
+            return this.getCurrentRouteConfig(routeConfig.children)
+          }
+        }
+      }
+    }
+  }
 </script>

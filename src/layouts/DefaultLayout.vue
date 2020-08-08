@@ -12,19 +12,23 @@
           <router-link
             to="/"
             class="navbar-item"
-            :class="{'is-active': $route.matched[0].name === 'home'}"
-          >Home</router-link>
+            :class="{ 'is-active': $route.matched[0].name === 'home' }"
+            >Home</router-link
+          >
           <router-link
             to="/components"
             class="navbar-item"
-            :class="{'is-active': $route.matched[0].name === 'components'}"
-          >Components</router-link>
+            :class="{ 'is-active': $route.matched[0].name === 'components' }"
+            >Components</router-link
+          >
         </div>
       </div>
     </nav>
     <div class="hero-body px-0 py-0 soupe-ui-layout-body hero">
       <slot></slot>
     </div>
-    <div class="hero-foot px-1 py-1 soupe-ui-layout-footer">©2020 CheeryWorks, Ltd.</div>
+    <div class="hero-foot px-1 py-1 soupe-ui-layout-footer">
+      ©2020 CheeryWorks, Ltd.
+    </div>
   </div>
 </template>

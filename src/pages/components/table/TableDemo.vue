@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: 'soupe-ui-table-demo'
-}
+  export default {
+    name: 'soupe-ui-table-demo'
+  }
 </script>

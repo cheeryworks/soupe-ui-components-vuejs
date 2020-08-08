@@ -10,21 +10,21 @@
 </template>
 
 <script>
-export default {
-  name: 'soupe-ui-select-demo',
-  data() {
-    return {
-      options: [
-        {
-          name: 'A1',
-          value: 'A1',
-        },
-        {
-          name: 'A2',
-          value: 'A2',
-        },
-      ],
+  export default {
+    name: 'soupe-ui-select-demo',
+    data() {
+      return {
+        options: [
+          {
+            name: 'A1',
+            value: 'A1'
+          },
+          {
+            name: 'A2',
+            value: 'A2'
+          }
+        ]
+      }
     }
-  },
-}
+  }
 </script>

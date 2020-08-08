@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: 'soupe-ui-tree-select-demo',
-}
+  export default {
+    name: 'soupe-ui-tree-select-demo'
+  }
 </script>
