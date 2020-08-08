@@ -1,0 +1,23 @@
+{
+  "global": {
+    "all": "全部",
+    "components": {
+      "select": {
+        "options": {
+          "empty": "空"
+        }
+      },
+      "table": {
+        "pagination_page_sizes_left_bottom_label": "，每页",
+        "pagination_page_sizes_left_label": "显示",
+        "pagination_page_sizes_right_label": "行",
+        "pagination_records": "显示 {startNumber} - {endNumber} 条，共 {total} 条",
+        "pagination_pages": "当前第 {currentPage} 页，共 {totalPage} 页",
+        "data": {
+          "empty": "无数据"
+        }
+      }
+    },
+    "enabled": "启用"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "global": {
+    "all": "All",
+    "components": {
+      "select": {
+        "options": {
+          "empty": "Empty"
+        }
+      },
+      "table": {
+        "pagination_page_sizes_left_bottom_label": "，Per Page",
+        "pagination_page_sizes_left_label": "",
+        "pagination_page_sizes_right_label": "Row",
+        "pagination_records": "{startNumber} - {endNumber}, Total {total}",
+        "pagination_pages": "Page {currentPage} ，Total {totalPage} Page",
+        "data": {
+          "empty": "No Data"
+        }
+      }
+    },
+    "enabled": "Enabled"
+  }
+}
