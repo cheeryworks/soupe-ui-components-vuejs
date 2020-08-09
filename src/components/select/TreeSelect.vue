@@ -6,31 +6,19 @@
     :width="width"
     :left-label="leftLabel"
     :right-label="rightLabel"
+    :value="currentValue"
     :customized-name="name"
     :close-on-click="false"
   >
-    <ul
-      class="menu soupe-ui-select-options"
-      :style="{ width: optionWidth }"
-      v-show="!readonly"
-    >
-      <li>
-        <div
-          class="soupe-ui-tree-select-content"
-          :style="{ maxHeight: optionHeight ? optionHeight : 'auto' }"
-        >
-          <soupe-ui-tree
-            ref="selectableTree"
-            :records="records"
-            :autoSelect="false"
-            :selectedItemValue="currentValue"
-            :expandedLevel="expandedLevel"
-            :itemClickable="optionClickable"
-            @select="select"
-          ></soupe-ui-tree>
-        </div>
-      </li>
-    </ul>
+    <soupe-ui-tree
+      ref="selectableTree"
+      :records="records"
+      :autoSelect="false"
+      :selectedItemValue="currentValue"
+      :expandedLevel="expandedLevel"
+      :itemClickable="optionClickable"
+      @select="select"
+    ></soupe-ui-tree>
   </soupe-ui-select>
 </template>
 <script>

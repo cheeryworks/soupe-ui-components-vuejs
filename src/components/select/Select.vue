@@ -1,41 +1,58 @@
 <template>
-  <div class="soupe-ui-select columns is-gapless" :style="{ width: width }">
-    <div class="soupe-ui-select-left-label column is-narrow" v-if="leftLabel">
-      <button class="button is-white">{{ leftLabel }}</button>
+  <div
+    class="soupe-ui-select columns is-gapless is-vcentered"
+    :style="{ width: width }"
+    v-click-outside="close"
+  >
+    <div class="soupe-ui-select-label column is-narrow" v-if="leftLabel">
+      <label>{{ leftLabel }}</label>
     </div>
-    <div class="dropdown" :class="{ 'is-hoverable': !currentReadonly }">
-      <div
-        class="soupe-ui-select-options dropdown-trigger"
-        :style="{ width: width }"
-      >
+    <div class="soupe-ui-select-options dropdown column">
+      <div class="dropdown-trigger">
         <button
-          class="button"
+          class="button columns is-gapless"
           aria-haspopup="true"
           :aria-controls="id"
           :style="{ width: width }"
+          @click="open"
         >
-          <span>Dropdown button</span>
-          <span class="icon is-small" v-if="!currentReadonly">
+          <div class="column has-text-left">{{ name }}</div>
+          <div class="column is-narrow icon is-small" v-if="!readonly">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
+          </div>
         </button>
       </div>
-      <div class="dropdown-menu" :id="id" role="menu">
+      <div
+        class="dropdown-menu"
+        :id="id"
+        role="menu"
+        :style="{
+          width: optionWidth,
+          maxHeight: optionHeight ? optionHeight : 'auto'
+        }"
+      >
         <div class="dropdown-content">
-          <button
-            v-for="(option, i) in options"
-            :key="i"
-            class="dropdown-item button is-white"
-            :style="{ width: optionWidth }"
-            :class="{ 'text-muted': !optionClickable(option) }"
-            @click="select(option, true)"
-            v-html="renderName(option)"
-          ></button>
+          <div v-if="options">
+            <div
+              class="soupe-ui-select-option"
+              v-for="(option, i) in options"
+              :key="i"
+            >
+              <button
+                class="dropdown-item button is-white"
+                :style="{ width: optionWidth }"
+                :class="{ 'text-muted': !optionClickable(option) }"
+                @click="select(option, true)"
+                v-html="renderName(option)"
+              ></button>
+            </div>
+          </div>
+          <slot v-else></slot>
         </div>
       </div>
     </div>
-    <div class="soupe-ui-select-right-label column is-narrow" v-if="rightLabel">
-      <button class="button is-white">{{ rightLabel }}</button>
+    <div class="soupe-ui-select-label column is-narrow" v-if="rightLabel">
+      <label>{{ rightLabel }}</label>
     </div>
   </div>
 </template>
@@ -98,7 +115,8 @@
       return {
         id: this._uid,
         name: null,
-        currentValue: null
+        currentValue: null,
+        computedOptionWidth: null
       }
     },
     watch: {
@@ -112,17 +130,35 @@
         this.setValue()
       }
     },
-    computed: {
-      currentReadonly() {
-        return this.readonly
-      }
-    },
-    created() {
-      this.setValue()
-    },
     mounted() {
       if (this.customizedName) {
         this.name = this.customizedName
+      }
+
+      if (this.value) {
+        this.currentValue = this.value
+      }
+
+      this.setValue()
+    },
+    directives: {
+      'click-outside': {
+        bind: function (el, binding) {
+          const bubble = binding.modifiers.bubble
+          const handler = (e) => {
+            if (bubble || (!el.contains(e.target) && el !== e.target)) {
+              binding.value(e)
+            }
+          }
+          el.__vueClickOutside__ = handler
+
+          document.addEventListener('click', handler)
+        },
+
+        unbind: function (el) {
+          document.removeEventListener('click', el.__vueClickOutside__)
+          el.__vueClickOutside__ = null
+        }
       }
     },
     methods: {
@@ -178,11 +214,15 @@
           }
         }
       },
+      open() {
+        if (this.readonly) {
+          return
+        }
+
+        this.$el.querySelector('.dropdown').classList.add('is-active')
+      },
       close() {
-        // try {
-        //   $(this.$el).foundation('_hide')
-        // } catch (e) {
-        // }
+        this.$el.querySelector('.dropdown').classList.remove('is-active')
       }
     }
   }
@@ -191,47 +231,20 @@
 <style scoped lang="scss">
   @import '~bulma/sass/utilities/_all';
 
-  .soupe-ui-select a {
-    color: $grey-dark;
-    white-space: nowrap;
-  }
-
-  .soupe-ui-select.dropdown.menu > li > a {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .soupe-ui-select .menu {
-    margin-top: 1px;
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid $grey;
-  }
-
-  .soupe-ui-select.menu .is-active > a {
-    background-color: transparent;
-  }
-
-  .soupe-ui-select .menu li a {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .soupe-ui-select .menu li .menu li a {
-    padding: 10px;
-  }
-
-  .soupe-ui-select .menu {
-    min-width: 30px;
-  }
-
-  .soupe-ui-select .is-active a {
-    color: $grey-dark;
-  }
-
-  .soupe-ui-select-left-label > a {
+  .soupe-ui-select {
     display: inline-flex;
-    justify-content: center;
+  }
+
+  .soupe-ui-select-options > .dropdown-menu {
+    min-width: auto;
+  }
+
+  .soupe-ui-select .button {
+    vertical-align: baseline;
+  }
+
+  .soupe-ui-select-label > label {
+    padding: 5px;
   }
 
   .soupe-ui-select-name {

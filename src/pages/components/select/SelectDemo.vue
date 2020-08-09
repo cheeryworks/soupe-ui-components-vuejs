@@ -1,11 +1,33 @@
 <template>
   <div>
-    <soupe-ui-select :options="options"></soupe-ui-select>
-    <soupe-ui-select
-      leftLabel="第"
-      rightLabel="页"
-      :options="options"
-    ></soupe-ui-select>
+    <div class="field">
+      <label class="label">Default Select</label>
+      <soupe-ui-select :options="options"></soupe-ui-select>
+    </div>
+    <div class="field">
+      <label class="label">Select with customized labels</label>
+      <soupe-ui-select
+        :left-label="
+          $t('global.components.table.pagination_pages', {
+            currentPage: table.page,
+            totalPage: table.totalPage > 0 ? table.totalPage : 1
+          }) +
+          $t('global.components.table.pagination_page_sizes_left_bottom_label')
+        "
+        :right-label="
+          $t('global.components.table.pagination_page_sizes_right_label')
+        "
+        :options="table.pageSizes"
+      ></soupe-ui-select>
+    </div>
+    <div class="field">
+      <label class="label">Readonly Select</label>
+      <soupe-ui-select :options="options" readonly></soupe-ui-select>
+    </div>
+    <div class="field">
+      <label class="label">100% width Select</label>
+      <soupe-ui-select :options="options" width="100%"></soupe-ui-select>
+    </div>
   </div>
 </template>
 
@@ -16,14 +38,19 @@
       return {
         options: [
           {
-            name: 'A1',
-            value: 'A1'
+            id: 'A1',
+            name: 'A1'
           },
           {
-            name: 'A2',
-            value: 'A2'
+            id: 'A2',
+            name: 'A2'
           }
-        ]
+        ],
+        table: {
+          totalPage: 2,
+          page: 1,
+          pageSizes: [20, 50, 100]
+        }
       }
     }
   }

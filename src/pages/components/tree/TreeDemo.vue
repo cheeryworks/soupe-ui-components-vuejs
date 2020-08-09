@@ -1,5 +1,11 @@
 <template>
-  <soupe-ui-tree :records="records"></soupe-ui-tree>
+  <soupe-ui-tree :records="records">
+    <template slot="soupe-ui-tree-item-controls">
+      <a>
+        <i class="icon fas fa-bars"></i>
+      </a>
+    </template>
+  </soupe-ui-tree>
 </template>
 
 <script>
@@ -9,16 +15,16 @@
       return {
         records: [
           {
+            id: 'A',
             name: 'A',
-            value: 'A',
             children: [
               {
-                name: 'A1',
-                value: 'A1'
+                id: 'A1',
+                name: 'A1'
               },
               {
-                name: 'A2',
-                value: 'A2'
+                id: 'A2',
+                name: 'A2'
               }
             ]
           }

@@ -7,20 +7,20 @@
       @mouseover="hovered = true"
       @mouseleave="hovered = false"
     >
-      <div class="grid-x">
-        <div class="cell shrink soupe-ui-tree-item-arrow" @click="expand">
-          <a>
-            <span :class="arrowClass">&nbsp;&nbsp;&nbsp;</span>
-          </a>
+      <div class="columns is-gapless is-vcentered">
+        <div class="column is-narrow soupe-ui-tree-item-arrow" @click="expand">
+          <span :class="arrowClass">&nbsp;&nbsp;&nbsp;</span>
         </div>
-        <div class="cell auto soupe-ui-tree-item-name" @click="select(record)">
-          <a :class="{ 'text-muted': !itemClickable(record) }">{{ name }}</a>
+        <div class="column soupe-ui-tree-item-name" @click="select(record)">
+          <div :class="{ 'text-muted': !itemClickable(record) }">
+            {{ name }}
+          </div>
         </div>
         <div
           v-if="
             !showControlsOnMouseOver || (showControlsOnMouseOver && hovered)
           "
-          class="cell shrink soupe-ui-tree-item-controls"
+          class="column is-narrow soupe-ui-tree-item-controls"
         >
           <slot name="soupe-ui-tree-item-controls" :record="record"></slot>
         </div>
@@ -169,49 +169,31 @@
 <style scoped lang="scss">
   @import '~bulma/sass/utilities/_all';
 
-  .soupe-ui-tree-item a {
-    padding: 9px;
-    display: block;
-    color: $primary;
+  .soupe-ui-tree-item {
+    cursor: pointer;
   }
 
-  .soupe-ui-tree-item a:hover {
-    color: $primary;
+  .soupe-ui-tree-item-name > div {
+    padding: 0.375rem 0px;
   }
 
   .soupe-ui-tree-item-current:hover {
-    background-color: $grey;
+    border-left-color: $light;
+    background-color: $light;
   }
 
   .soupe-ui-tree-item-current.active {
-    font-weight: bold;
-    background-color: $grey-light;
     border-left: 2px solid $primary;
+    color: $primary;
   }
 
   .soupe-ui-tree-item-current.active:hover {
-    background-color: $grey;
+    background-color: $light;
   }
 
   .soupe-ui-tree-item-arrow {
     width: 30px;
     padding-right: 0px !important;
-  }
-
-  .soupe-ui-tree-item-arrow > a {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-
-  .soupe-ui-tree-item-arrow > a > span {
-    margin-top: 4px !important;
-  }
-
-  .soupe-ui-tree-item-name > a {
-    padding-left: 0px !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   .soupe-ui-tree-item-arrow .arrow-right {
