@@ -1,5 +1,5 @@
 import Select from '@/components/select/Select'
-import TreeSelect from '@/components/select/TreeSelect'
+import TreeSelect from '@/components/tree-select/TreeSelect'
 import TreeItem from '@/components/tree/TreeItem'
 import Tree from '@/components/tree/Tree'
 import Table from '@/components/table/Table'

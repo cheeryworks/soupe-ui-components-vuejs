@@ -1,6 +1,6 @@
 import Introduction from '@/pages/components/Introduction'
 import SelectDemo from '@/pages/components/select/SelectDemo'
-import TreeSelectDemo from '@/pages/components/select/TreeSelectDemo'
+import TreeSelectDemo from '@/pages/components/tree-select/TreeSelectDemo'
 import TreeDemo from '@/pages/components/tree/TreeDemo'
 import TableDemo from '@/pages/components/table/TableDemo'
 

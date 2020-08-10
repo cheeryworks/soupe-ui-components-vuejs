@@ -152,3 +152,10 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  @import '~bulma/sass/utilities/_all';
+  .soupe-ui-tree {
+    background-color: $white;
+  }
+</style>
