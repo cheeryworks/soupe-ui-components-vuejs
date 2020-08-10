@@ -1,7 +1,7 @@
 <template>
   <default-layout>
-    <div class="tile hero-body px-0 py-0 soupe-ui-layout-sidebar">
-      <div class="tile is-vertical is-3 px-2 py-2 hero">
+    <div class="tile hero-body px-0 py-0">
+      <div class="tile is-vertical is-3 px-2 py-2 hero soupe-ui-layout-sidebar">
         <div class="panel is-primary hero-body px-0 py-0 hero">
           <p class="panel-heading hero-head">Components</p>
           <div class="hero-body px-0 py-0">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="tile is-9 px-2 py-2 soupe-ui-layout-main-content hero">
-        <div class="panel hero-body px-2 py-2">
+        <div class="panel hero-body px-2 py-2 hero">
           <introduction v-if="$route.name === 'components'"></introduction>
           <router-view v-else></router-view>
         </div>
@@ -81,3 +81,22 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  .soupe-ui-layout-sidebar.hero > .hero-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 1;
+  }
+
+  .soupe-ui-layout-sidebar .panel {
+    background-color: transparent;
+  }
+
+  .panel > .hero-body,
+  .panel.hero-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 1;
+  }
+</style>
