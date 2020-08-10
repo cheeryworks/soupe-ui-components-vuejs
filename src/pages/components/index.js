@@ -3,32 +3,21 @@ import SelectDemo from '@/pages/components/select/SelectDemo'
 import TreeSelectDemo from '@/pages/components/tree-select/TreeSelectDemo'
 import TreeDemo from '@/pages/components/tree/TreeDemo'
 import TableDemo from '@/pages/components/table/TableDemo'
-
-const components = {
-  Introduction,
-  SelectDemo,
-  TreeSelectDemo,
-  TreeDemo,
-  TableDemo
-}
-
-const install = function (Vue) {
-  for (let name in components) {
-    let component = components[name]
-
-    if (component.name) {
-      name = component.name
-    }
-
-    Vue.component(name, component)
-  }
-}
+import TagDemo from '@/pages/components/tag/TagDemo'
+import ContextMenuDemo from '@/pages/components/context-menu/ContextMenuDemo'
+import MessageBoxDemo from '@/pages/components/message-box/MessageBoxDemo'
+import CardDemo from '@/pages/components/card/CardDemo'
+import AccordionDemo from '@/pages/components/accordion/AccordionDemo'
 
 export default {
-  install,
   Introduction,
   SelectDemo,
   TreeSelectDemo,
   TreeDemo,
-  TableDemo
+  TableDemo,
+  TagDemo,
+  ContextMenuDemo,
+  MessageBoxDemo,
+  CardDemo,
+  AccordionDemo
 }

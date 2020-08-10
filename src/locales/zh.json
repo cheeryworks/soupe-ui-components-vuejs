@@ -16,8 +16,21 @@
         "data": {
           "empty": "无数据"
         }
+      },
+      "message": {
+        "title": {
+          "default": "信息",
+          "confirm": "确认",
+          "success": "成功",
+          "warning": "警告",
+          "error": "错误"
+        }
       }
     },
-    "enabled": "启用"
+    "enabled": "启用",
+    "add-child": "添加子项",
+    "move-up": "上移",
+    "move-down": "下移",
+    "delete": "删除"
   }
 }

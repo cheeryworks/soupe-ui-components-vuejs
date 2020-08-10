@@ -52,6 +52,46 @@ export default new Router({
           meta: {
             displayName: 'Table'
           }
+        },
+        {
+          path: '/components/tag',
+          name: 'component_tag',
+          component: ComponentDemos.TagDemo,
+          meta: {
+            displayName: 'Tag'
+          }
+        },
+        {
+          path: '/components/context-menu',
+          name: 'component_context-menu',
+          component: ComponentDemos.ContextMenuDemo,
+          meta: {
+            displayName: 'ContextMenu'
+          }
+        },
+        {
+          path: '/components/message-box',
+          name: 'component_message-box',
+          component: ComponentDemos.MessageBoxDemo,
+          meta: {
+            displayName: 'MessageBox'
+          }
+        },
+        {
+          path: '/components/card',
+          name: 'component_card',
+          component: ComponentDemos.CardDemo,
+          meta: {
+            displayName: 'Card'
+          }
+        },
+        {
+          path: '/components/accordion',
+          name: 'component_accordion',
+          component: ComponentDemos.AccordionDemo,
+          meta: {
+            displayName: 'Accordion'
+          }
         }
       ]
     },

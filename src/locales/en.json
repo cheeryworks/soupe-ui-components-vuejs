@@ -16,8 +16,21 @@
         "data": {
           "empty": "No Data"
         }
+      },
+      "message": {
+        "title": {
+          "default": "Information",
+          "confirm": "Confirm",
+          "success": "Success",
+          "warning": "Warning",
+          "error": "Error"
+        }
       }
     },
-    "enabled": "Enabled"
+    "enabled": "Enabled",
+    "add-child": "Add Child",
+    "move-up": "Move Up",
+    "move-down": "Move Down",
+    "delete": "Delete"
   }
 }
