@@ -1,27 +1,26 @@
 <template>
-  <div
-    class="soupe-ui-table medium-grid-frame"
-    :class="{
-      'grid-y': !autoHeight,
-      'soupe-ui-table-border': border,
-      'soupe-ui-table-fixed': isFixed,
-      'soupe-ui-table-header-centralized': headerCenter
-    }"
-  >
-    <div class="cell grid-x pagination-top">
-      <template v-if="pageSizeInBottom">
-        <div class="cell auto">
-          <ul class="menu float-right operations" v-show="hasOperations">
-            <li>
-              <slot name="operations"></slot>
-            </li>
-          </ul>
-        </div>
-      </template>
-      <template v-else>
-        <div class="cell small-6">
-          <ul class="menu pagination-bar" v-show="paging">
-            <li>
+  <div class="hero">
+    <div
+      class="soupe-ui-table hero"
+      :class="{
+        'hero-body': !autoHeight,
+        'px-0 py-0': !autoHeight,
+        'soupe-ui-table-border': border,
+        'soupe-ui-table-fixed': isFixed,
+        'soupe-ui-table-header-centralized': headerCenter
+      }"
+    >
+      <div class="hero-head pagination-top">
+        <div class="columns is-gapless is-vcentered mx-0 my-0">
+          <template v-if="pageSizeInBottom">
+            <div class="column">
+              <div class="operations has-text-right" v-show="hasOperations">
+                <slot name="operations"></slot>
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="column">
               <soupe-ui-select
                 :left-label="
                   $t('global.components.table.pagination_page_sizes_left_label')
@@ -35,535 +34,543 @@
                 :options="pageSizes"
                 @select="changePageSize"
               />
-            </li>
-          </ul>
-        </div>
-        <div class="cell small-6">
-          <ul class="menu float-right operations" v-show="hasOperations">
-            <li>
-              <slot name="operations"></slot>
-            </li>
-          </ul>
-        </div>
-      </template>
-    </div>
-    <div
-      class="cell auto medium-grid-frame soupe-ui-table-content"
-      :class="{
-        'grid-y': !autoHeight
-      }"
-    >
-      <div class="cell soupe-ui-table-header grid-x">
-        <div
-          class="cell shrink soupe-ui-table-header-left height-100 overflow-hidden"
-          v-if="hasLeftFixedColumns"
-        >
-          <table>
-            <colgroup
-              v-if="
-                selectionConfigs &&
-                selectionConfigs.multipleSelect &&
-                fixedLeftColumns >= 1
-              "
-            >
-              <col class="checkbox-column" />
-            </colgroup>
-            <colgroup v-for="(column, i) in columnsInLeftBody" :key="i">
-              <col :style="{ width: column.width + 'px' }" />
-            </colgroup>
-            <thead>
-              <tr v-for="(rowInHeader, i) in rowsInLeftHeader" :key="i">
-                <th
-                  class="checkbox-column"
-                  v-if="
-                    selectionConfigs &&
-                    selectionConfigs.multipleSelect &&
-                    fixedLeftColumns >= 1
-                  "
-                >
-                  <input
-                    v-if="selectionConfigs.selectAll"
-                    type="checkbox"
-                    :checked="checkedAll"
-                    @click="internalCheckingAll($event)"
-                  />
-                </th>
-                <th
-                  v-for="(columnInHeader, j) in rowInHeader"
-                  :key="j"
-                  :rowspan="columnInHeader.rowSpan"
-                  :colspan="columnInHeader.colSpan"
-                  :class="[
-                    columnInHeader.classes,
-                    {
-                      'soupe-ui-table-no-right-border': isLastColumnInRow(
-                        rowInHeader,
-                        i,
-                        j,
-                        columnsInLeftBody.length
-                      )
-                    }
-                  ]"
-                >
-                  {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class="cell auto soupe-ui-table-header-center overflow-x-hidden">
-          <table>
-            <colgroup
-              v-if="
-                selectionConfigs &&
-                selectionConfigs.multipleSelect &&
-                fixedLeftColumns < 1
-              "
-            >
-              <col class="checkbox-column" />
-            </colgroup>
-            <colgroup v-for="(column, i) in columnsInCenterBody" :key="i">
-              <col
-                :style="{
-                  width: column.width
-                    ? column.width + 'px'
-                    : autoColumnWidth + 'px'
-                }"
-              />
-            </colgroup>
-            <colgroup v-if="bodyScrollableV">
-              <col style="width: 100px;" />
-            </colgroup>
-            <thead>
-              <tr v-for="(rowInHeader, i) in rowsInCenterHeader" :key="i">
-                <th
-                  class="checkbox-column"
-                  v-if="
-                    selectionConfigs &&
-                    selectionConfigs.multipleSelect &&
-                    fixedLeftColumns < 1
-                  "
-                >
-                  <input
-                    v-if="selectionConfigs.selectAll"
-                    type="checkbox"
-                    :checked="checkedAll"
-                    @click="internalCheckingAll($event)"
-                  />
-                </th>
-                <th
-                  v-for="(columnInHeader, j) in rowInHeader"
-                  :key="j"
-                  :rowspan="columnInHeader.rowSpan"
-                  :colspan="columnInHeader.colSpan"
-                  :class="[
-                    columnInHeader.classes,
-                    {
-                      'soupe-ui-table-no-right-border': isLastColumnInRow(
-                        rowInHeader,
-                        i,
-                        j,
-                        columnsInCenterBody.length
-                      ),
-                      'soupe-ui-table-header-no-right-border': isLastColumnInRow(
-                        rowInHeader,
-                        i,
-                        j,
-                        columnsInCenterBody.length
-                      )
-                    }
-                  ]"
-                >
-                  {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
-                </th>
-                <th v-if="bodyScrollableV" style="text-overflow: clip;">
-                  &nbsp;
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div
-          class="cell shrink soupe-ui-table-header-right"
-          v-if="hasRightFixedColumns"
-        >
-          <table>
-            <colgroup v-for="(column, i) in columnsInRightBody" :key="i">
-              <col :style="{ width: column.width + 'px' }" />
-            </colgroup>
-            <thead>
-              <tr v-for="(rowInHeader, i) in rowsInRightHeader" :key="i">
-                <th
-                  v-for="(columnInHeader, j) in rowInHeader"
-                  :key="j"
-                  :rowspan="columnInHeader.rowSpan"
-                  :colspan="columnInHeader.colSpan"
-                  :class="[
-                    columnInHeader.classes,
-                    {
-                      'soupe-ui-table-no-right-border': isLastColumnInRow(
-                        rowInHeader,
-                        i,
-                        j,
-                        columnsInRightBody.length
-                      )
-                    }
-                  ]"
-                >
-                  {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
-                </th>
-              </tr>
-            </thead>
-          </table>
+            </div>
+            <div class="column is-narrow">
+              <div class="operations has-text-right" v-show="hasOperations">
+                <slot name="operations"></slot>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
-      <div class="cell auto soupe-ui-table-body grid-x">
+      <div class="hero-body px-0 py-0 soupe-ui-table-content hero">
         <div
-          class="cell shrink soupe-ui-table-body-left height-100 overflow-y-hidden"
-          v-if="hasLeftFixedColumns"
+          class="hero-head soupe-ui-table-header columns is-gapless mx-0 my-0 has-background-primary"
         >
-          <table
-            class="striped"
-            :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
+          <div
+            class="column is-narrow soupe-ui-table-header-left columns is-gapless mx-0 my-0 overflow-hidden"
+            v-if="hasLeftFixedColumns"
           >
-            <colgroup
-              v-if="
-                selectionConfigs &&
-                selectionConfigs.multipleSelect &&
-                fixedLeftColumns >= 1
-              "
-            >
-              <col class="checkbox-column" />
-            </colgroup>
-            <colgroup v-for="(column, i) in columnsInLeftBody" :key="i">
-              <col :style="{ width: column.width + 'px' }" />
-            </colgroup>
-            <tbody>
-              <tr v-for="(record, i) in records" :key="i">
-                <td
-                  class="checkbox-column"
-                  v-if="
-                    selectionConfigs &&
-                    selectionConfigs.multipleSelect &&
-                    fixedLeftColumns >= 1
-                  "
-                >
-                  <input
-                    type="checkbox"
-                    :checked="isChecked(record)"
-                    @click.stop="onCheck($event, record)"
-                  />
-                </td>
-                <template v-for="(column, j) in columnsInLeftBody">
-                  <template v-if="column.slot">
-                    <slot
-                      :name="column.slot"
-                      :rowIndex="i"
-                      :columnIndex="j"
-                      :column="column"
-                      :record="record"
+            <table class="column table">
+              <colgroup
+                v-if="
+                  selectionConfigs &&
+                  selectionConfigs.multipleSelect &&
+                  fixedLeftColumns >= 1
+                "
+              >
+                <col class="checkbox-column" />
+              </colgroup>
+              <colgroup v-for="(column, i) in columnsInLeftBody" :key="i">
+                <col :style="{ width: column.width + 'px' }" />
+              </colgroup>
+              <thead>
+                <tr v-for="(rowInHeader, i) in rowsInLeftHeader" :key="i">
+                  <th
+                    class="checkbox-column"
+                    v-if="
+                      selectionConfigs &&
+                      selectionConfigs.multipleSelect &&
+                      fixedLeftColumns >= 1
+                    "
+                  >
+                    <input
+                      v-if="selectionConfigs.selectAll"
+                      type="checkbox"
+                      :checked="checkedAll"
+                      @click="internalCheckingAll($event)"
                     />
-                  </template>
-                  <template v-else>
-                    <td
-                      :key="j"
-                      v-if="column.renderer"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInLeftBody,
-                            i,
-                            j,
-                            columnsInLeftBody.length
-                          )
-                        }
-                      ]"
-                      v-html="column.renderer(i, j, column, record)"
-                    ></td>
-                    <td
-                      v-else
-                      :key="j"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInLeftBody,
-                            i,
-                            j,
-                            columnsInLeftBody.length
-                          )
-                        }
-                      ]"
-                    >
-                      {{ record[column.name] ? record[column.name] : '&nbsp;' }}
-                    </td>
-                  </template>
-                </template>
-              </tr>
-              <tr v-if="bodyScrollableV">
-                <td
-                  :colspan="columnsInLeftBody.length"
-                  class="soupe-ui-table-colspan"
-                >
-                  &nbsp;
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </th>
+                  <th
+                    v-for="(columnInHeader, j) in rowInHeader"
+                    :key="j"
+                    :rowspan="columnInHeader.rowSpan"
+                    :colspan="columnInHeader.colSpan"
+                    :class="[
+                      columnInHeader.classes,
+                      {
+                        'soupe-ui-table-no-right-border': isLastColumnInRow(
+                          rowInHeader,
+                          i,
+                          j,
+                          columnsInLeftBody.length
+                        )
+                      }
+                    ]"
+                  >
+                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div
+            class="column soupe-ui-table-header-center columns is-gapless mx-0 my-0 overflow-x-hidden"
+          >
+            <table class="column table">
+              <colgroup
+                v-if="
+                  selectionConfigs &&
+                  selectionConfigs.multipleSelect &&
+                  fixedLeftColumns < 1
+                "
+              >
+                <col class="checkbox-column" />
+              </colgroup>
+              <colgroup v-for="(column, i) in columnsInCenterBody" :key="i">
+                <col
+                  :style="{
+                    width: column.width
+                      ? column.width + 'px'
+                      : autoColumnWidth + 'px'
+                  }"
+                />
+              </colgroup>
+              <colgroup v-if="bodyScrollableV">
+                <col style="width: 100px;" />
+              </colgroup>
+              <thead>
+                <tr v-for="(rowInHeader, i) in rowsInCenterHeader" :key="i">
+                  <th
+                    class="checkbox-column"
+                    v-if="
+                      selectionConfigs &&
+                      selectionConfigs.multipleSelect &&
+                      fixedLeftColumns < 1
+                    "
+                  >
+                    <input
+                      v-if="selectionConfigs.selectAll"
+                      type="checkbox"
+                      :checked="checkedAll"
+                      @click="internalCheckingAll($event)"
+                    />
+                  </th>
+                  <th
+                    v-for="(columnInHeader, j) in rowInHeader"
+                    :key="j"
+                    :rowspan="columnInHeader.rowSpan"
+                    :colspan="columnInHeader.colSpan"
+                    :class="[
+                      columnInHeader.classes,
+                      {
+                        'soupe-ui-table-no-right-border': isLastColumnInRow(
+                          rowInHeader,
+                          i,
+                          j,
+                          columnsInCenterBody.length
+                        ),
+                        'soupe-ui-table-header-no-right-border': isLastColumnInRow(
+                          rowInHeader,
+                          i,
+                          j,
+                          columnsInCenterBody.length
+                        )
+                      }
+                    ]"
+                  >
+                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                  </th>
+                  <th v-if="bodyScrollableV" style="text-overflow: clip;">
+                    &nbsp;
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div
+            class="column is-narrow soupe-ui-table-header-right columns is-gapless mx-0 my-0"
+            v-if="hasRightFixedColumns"
+          >
+            <table class="column table is-striped">
+              <colgroup v-for="(column, i) in columnsInRightBody" :key="i">
+                <col :style="{ width: column.width + 'px' }" />
+              </colgroup>
+              <thead>
+                <tr v-for="(rowInHeader, i) in rowsInRightHeader" :key="i">
+                  <th
+                    v-for="(columnInHeader, j) in rowInHeader"
+                    :key="j"
+                    :rowspan="columnInHeader.rowSpan"
+                    :colspan="columnInHeader.colSpan"
+                    :class="[
+                      columnInHeader.classes,
+                      {
+                        'soupe-ui-table-no-right-border': isLastColumnInRow(
+                          rowInHeader,
+                          i,
+                          j,
+                          columnsInRightBody.length
+                        )
+                      }
+                    ]"
+                  >
+                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
         <div
-          class="cell auto soupe-ui-table-body-center height-100 overflow-x-auto overflow-y-auto"
+          class="hero-body px-0 py-0 soupe-ui-table-body columns is-gapless mx-0 my-0"
         >
-          <table
-            class="striped"
-            :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
+          <div
+            class="column is-narrow soupe-ui-table-body-left columns is-gapless overflow-y-hidden mx-0 my-0"
+            v-if="hasLeftFixedColumns"
           >
-            <colgroup
-              v-if="
-                selectionConfigs &&
-                selectionConfigs.multipleSelect &&
-                fixedLeftColumns < 1
-              "
+            <table
+              class="column table is-striped"
+              :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
             >
-              <col class="checkbox-column" />
-            </colgroup>
-            <colgroup v-for="(column, i) in columnsInCenterBody" :key="i">
-              <col
-                :style="{
-                  width: column.width
-                    ? column.width + 'px'
-                    : autoColumnWidth + 'px'
-                }"
-              />
-            </colgroup>
-            <tbody>
-              <tr v-for="(record, i) in records" :key="i">
-                <td
-                  class="checkbox-column"
-                  v-if="
-                    selectionConfigs &&
-                    selectionConfigs.multipleSelect &&
-                    fixedLeftColumns < 1
-                  "
-                >
-                  <input
-                    type="checkbox"
-                    :checked="isChecked(record)"
-                    @click.stop="onCheck($event, record)"
-                  />
-                </td>
-                <template v-for="(column, j) in columnsInCenterBody">
-                  <template v-if="column.slot">
-                    <slot
-                      :name="column.slot"
-                      :rowIndex="i"
-                      :columnIndex="j"
-                      :column="column"
-                      :record="record"
+              <colgroup
+                v-if="
+                  selectionConfigs &&
+                  selectionConfigs.multipleSelect &&
+                  fixedLeftColumns >= 1
+                "
+              >
+                <col class="checkbox-column" />
+              </colgroup>
+              <colgroup v-for="(column, i) in columnsInLeftBody" :key="i">
+                <col :style="{ width: column.width + 'px' }" />
+              </colgroup>
+              <tbody>
+                <tr v-for="(record, i) in records" :key="i">
+                  <td
+                    class="checkbox-column"
+                    v-if="
+                      selectionConfigs &&
+                      selectionConfigs.multipleSelect &&
+                      fixedLeftColumns >= 1
+                    "
+                  >
+                    <input
+                      type="checkbox"
+                      :checked="isChecked(record)"
+                      @click.stop="onCheck($event, record)"
                     />
+                  </td>
+                  <template v-for="(column, j) in columnsInLeftBody">
+                    <template v-if="column.slot">
+                      <slot
+                        :name="column.slot"
+                        :rowIndex="i"
+                        :columnIndex="j"
+                        :column="column"
+                        :record="record"
+                      />
+                    </template>
+                    <template v-else>
+                      <td
+                        :key="j"
+                        v-if="column.renderer"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInLeftBody,
+                              i,
+                              j,
+                              columnsInLeftBody.length
+                            )
+                          }
+                        ]"
+                        v-html="column.renderer(i, j, column, record)"
+                      ></td>
+                      <td
+                        v-else
+                        :key="j"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInLeftBody,
+                              i,
+                              j,
+                              columnsInLeftBody.length
+                            )
+                          }
+                        ]"
+                      >
+                        {{
+                          record[column.name] ? record[column.name] : '&nbsp;'
+                        }}
+                      </td>
+                    </template>
                   </template>
-                  <template v-else>
-                    <td
-                      :key="j"
-                      v-if="column.renderer"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInCenterBody,
-                            i,
-                            j,
-                            columnsInCenterBody.length
-                          )
-                        }
-                      ]"
-                      v-html="column.renderer(i, j, column, record)"
-                    ></td>
-                    <td
-                      v-else
-                      :key="j"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInCenterBody,
-                            i,
-                            j,
-                            columnsInCenterBody.length
-                          )
-                        }
-                      ]"
-                    >
-                      {{ record[column.name] ? record[column.name] : '&nbsp;' }}
-                    </td>
+                </tr>
+                <tr v-if="bodyScrollableV">
+                  <td
+                    :colspan="columnsInLeftBody.length"
+                    class="soupe-ui-table-colspan"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="column soupe-ui-table-body-center overflow-x-auto overflow-y-auto columns is-gapless mx-0 my-0"
+          >
+            <table
+              class="column table is-striped"
+              :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
+            >
+              <colgroup
+                v-if="
+                  selectionConfigs &&
+                  selectionConfigs.multipleSelect &&
+                  fixedLeftColumns < 1
+                "
+              >
+                <col class="checkbox-column" />
+              </colgroup>
+              <colgroup v-for="(column, i) in columnsInCenterBody" :key="i">
+                <col
+                  :style="{
+                    width: column.width
+                      ? column.width + 'px'
+                      : autoColumnWidth + 'px'
+                  }"
+                />
+              </colgroup>
+              <tbody>
+                <tr v-for="(record, i) in records" :key="i">
+                  <td
+                    class="checkbox-column"
+                    v-if="
+                      selectionConfigs &&
+                      selectionConfigs.multipleSelect &&
+                      fixedLeftColumns < 1
+                    "
+                  >
+                    <input
+                      type="checkbox"
+                      :checked="isChecked(record)"
+                      @click.stop="onCheck($event, record)"
+                    />
+                  </td>
+                  <template v-for="(column, j) in columnsInCenterBody">
+                    <template v-if="column.slot">
+                      <slot
+                        :name="column.slot"
+                        :rowIndex="i"
+                        :columnIndex="j"
+                        :column="column"
+                        :record="record"
+                      />
+                    </template>
+                    <template v-else>
+                      <td
+                        :key="j"
+                        v-if="column.renderer"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInCenterBody,
+                              i,
+                              j,
+                              columnsInCenterBody.length
+                            )
+                          }
+                        ]"
+                        v-html="column.renderer(i, j, column, record)"
+                      ></td>
+                      <td
+                        v-else
+                        :key="j"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInCenterBody,
+                              i,
+                              j,
+                              columnsInCenterBody.length
+                            )
+                          }
+                        ]"
+                      >
+                        {{
+                          record[column.name] ? record[column.name] : '&nbsp;'
+                        }}
+                      </td>
+                    </template>
                   </template>
-                </template>
-              </tr>
-              <tr v-if="!records || (records.length === 0 && emptyMessage)">
-                <td
-                  class="text-center"
-                  :colspan="columnsInCenterBody.length"
-                  v-html="emptyMessage"
-                ></td>
-              </tr>
-            </tbody>
-          </table>
+                </tr>
+                <tr v-if="!records || (records.length === 0 && emptyMessage)">
+                  <td
+                    class="text-center"
+                    :colspan="columnsInCenterBody.length"
+                    v-html="emptyMessage"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="column is-narrow soupe-ui-table-body-right overflow-y-hidden columns is-gapless mx-0 my-0"
+            v-if="hasRightFixedColumns"
+          >
+            <table
+              class="column table is-striped"
+              :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
+            >
+              <colgroup
+                v-for="(column, index) in columnsInRightBody"
+                :key="index"
+              >
+                <col :style="{ width: column.width + 'px' }" />
+              </colgroup>
+              <tbody>
+                <tr v-for="(record, i) in records" :key="i">
+                  <template v-for="(column, j) in columnsInRightBody">
+                    <template v-if="column.slot">
+                      <slot
+                        :name="column.slot"
+                        :rowIndex="i"
+                        :columnIndex="j"
+                        :column="column"
+                        :record="record"
+                      />
+                    </template>
+                    <template v-else>
+                      <td
+                        :key="j"
+                        v-if="column.renderer"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInRightBody,
+                              i,
+                              j,
+                              columnsInRightBody.length
+                            )
+                          }
+                        ]"
+                        v-html="column.renderer(i, j, column, record)"
+                      ></td>
+                      <td
+                        v-else
+                        :key="j"
+                        :class="[
+                          column.classes,
+                          {
+                            'soupe-ui-table-no-right-border': isLastColumnInRow(
+                              columnsInRightBody,
+                              i,
+                              j,
+                              columnsInRightBody.length
+                            )
+                          }
+                        ]"
+                      >
+                        {{
+                          record[column.name] ? record[column.name] : '&nbsp;'
+                        }}
+                      </td>
+                    </template>
+                  </template>
+                </tr>
+                <tr v-if="bodyScrollableV">
+                  <td
+                    :colspan="columnsInRightBody.length"
+                    class="soupe-ui-table-colspan"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div
-          class="cell shrink soupe-ui-table-body-right height-100 overflow-y-hidden"
-          v-if="hasRightFixedColumns"
+          class="hero-foot soupe-ui-table-footer grid-x"
+          v-if="footer && footer.length > 0"
         >
-          <table
-            class="striped"
-            :class="{ 'soupe-ui-table-scroll': !bodyScrollableV }"
+          <div
+            class="cell shrink soupe-ui-table-footer-left"
+            v-if="hasLeftFixedColumns"
           >
-            <colgroup
-              v-for="(column, index) in columnsInRightBody"
-              :key="index"
-            >
-              <col :style="{ width: column.width + 'px' }" />
-            </colgroup>
-            <tbody>
-              <tr v-for="(record, i) in records" :key="i">
-                <template v-for="(column, j) in columnsInRightBody">
-                  <template v-if="column.slot">
-                    <slot
-                      :name="column.slot"
-                      :rowIndex="i"
-                      :columnIndex="j"
-                      :column="column"
-                      :record="record"
-                    />
-                  </template>
-                  <template v-else>
-                    <td
-                      :key="j"
-                      v-if="column.renderer"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInRightBody,
-                            i,
-                            j,
-                            columnsInRightBody.length
-                          )
-                        }
-                      ]"
-                      v-html="column.renderer(i, j, column, record)"
-                    ></td>
-                    <td
-                      v-else
-                      :key="j"
-                      :class="[
-                        column.classes,
-                        {
-                          'soupe-ui-table-no-right-border': isLastColumnInRow(
-                            columnsInRightBody,
-                            i,
-                            j,
-                            columnsInRightBody.length
-                          )
-                        }
-                      ]"
-                    >
-                      {{ record[column.name] ? record[column.name] : '&nbsp;' }}
-                    </td>
-                  </template>
-                </template>
-              </tr>
-              <tr v-if="bodyScrollableV">
-                <td
-                  :colspan="columnsInRightBody.length"
-                  class="soupe-ui-table-colspan"
-                ></td>
-              </tr>
-            </tbody>
-          </table>
+            LF
+          </div>
+          <div class="cell auto soupe-ui-table-footer-center">CF</div>
+          <div
+            class="cell shrink soupe-ui-table-footer-right"
+            v-if="hasRightFixedColumns"
+          >
+            RF
+          </div>
         </div>
       </div>
       <div
-        class="cell soupe-ui-table-footer grid-x"
-        v-if="footer && footer.length > 0"
+        class="hero-foot columns pagination-bottom is-gapless is-vcentered mx-0 my-0 mt-2"
+        v-show="paging"
       >
-        <div
-          class="cell shrink soupe-ui-table-footer-left"
-          v-if="hasLeftFixedColumns"
-        >
-          LF
+        <div class="column">
+          <div class="pagination-bar">
+            {{
+              $t('global.components.table.pagination_records', {
+                startNumber: startNumber,
+                endNumber: endNumber,
+                total: total
+              })
+            }}
+          </div>
         </div>
-        <div class="cell auto soupe-ui-table-footer-center">CF</div>
-        <div
-          class="cell shrink soupe-ui-table-footer-right"
-          v-if="hasRightFixedColumns"
-        >
-          RF
-        </div>
-      </div>
-    </div>
-    <div class="cell grid-x pagination-bottom" v-show="paging">
-      <div class="cell small-6">
-        <ul class="menu pagination-bar">
-          <li>
-            <a>
-              {{
-                $t('global.components.table.pagination_records', {
-                  startNumber: startNumber,
-                  endNumber: endNumber,
-                  total: total
-                })
-              }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="cell small-6">
-        <ul class="menu float-right pagination-bar">
-          <li>
-            <a>
+        <div class="column is-narrow">
+          <div
+            class="has-text-right pagination-bar columns is-gapless is-vcentered mx-0 my-0"
+          >
+            <div class="column is-narrow">
               {{
                 $t('global.components.table.pagination_pages', {
                   currentPage: page,
                   totalPage: totalPage > 0 ? totalPage : 1
                 })
               }}
-            </a>
-          </li>
-          <li v-if="pageSizeInBottom">
-            <soupe-ui-select
-              :left-label="
-                $t(
-                  'global.components.table.pagination_page_sizes_left_bottom_label'
-                )
-              "
-              :right-label="
-                $t('global.components.table.pagination_page_sizes_right_label')
-              "
-              :value="size"
-              :options="pageSizes"
-              @select="changePageSize"
-            />
-          </li>
-          <li>
-            <button
-              class="button hollow pagination-button"
-              :class="{ disabled: page === 1 }"
-              @click="prevPage()"
-            >
-              <i class="icon fas fa-caret-left"></i>
-            </button>
-          </li>
-          <li>
-            <button
-              class="button hollow pagination-button"
-              :class="{ disabled: page === totalPage || totalPage === 0 }"
-              @click="nextPage()"
-            >
-              <i class="icon fas fa-caret-right"></i>
-            </button>
-          </li>
-        </ul>
+            </div>
+            <div class="column is-narrow" v-if="pageSizeInBottom">
+              <soupe-ui-select
+                :left-label="
+                  $t(
+                    'global.components.table.pagination_page_sizes_left_bottom_label'
+                  )
+                "
+                :right-label="
+                  $t(
+                    'global.components.table.pagination_page_sizes_right_label'
+                  )
+                "
+                :value="size"
+                :options="pageSizes"
+                @select="changePageSize"
+              />
+            </div>
+            <div class="column is-narrow">
+              <button
+                class="button hollow pagination-button is-primary"
+                :class="{ disabled: page === 1 }"
+                @click="prevPage()"
+              >
+                <span class="icon">
+                  <i class="fas fa-caret-left"></i>
+                </span>
+              </button>
+            </div>
+            <div class="column is-narrow">
+              <button
+                class="button hollow pagination-button is-primary"
+                :class="{ disabled: page === totalPage || totalPage === 0 }"
+                @click="nextPage()"
+              >
+                <span class="icon">
+                  <i class="fas fa-caret-right"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -818,7 +825,7 @@
           let totalRemainWidth = this.widthOfBodyCenter - this.columnsWidth
 
           if (this.selectionConfigs && this.selectionConfigs.multipleSelect) {
-            totalRemainWidth = totalRemainWidth - 35
+            totalRemainWidth = totalRemainWidth - 40
           }
 
           if (!this.bodyScrollableV && this.isWindows) {
@@ -865,8 +872,9 @@
       },
       isFixed() {
         return (
-          (this.fixedLeftColumns && this.fixedLeftColumns > 0) ||
-          (this.fixedRightColumns && this.fixedRightColumns > 0)
+          !this.autoHeight &&
+          ((this.fixedLeftColumns && this.fixedLeftColumns > 0) ||
+            (this.fixedRightColumns && this.fixedRightColumns > 0))
         )
       },
       isWindows() {
@@ -1198,7 +1206,8 @@
       },
       checkingAll(checked, records) {
         for (let record of records) {
-          record.checked = checked
+          this.$set(record, 'checked', checked)
+          console.log(record + ':' + record.checked)
         }
       },
       internalCheckingAll(event) {
@@ -1219,6 +1228,24 @@
 <style scoped lang="scss">
   @import '~bulma/sass/utilities/_all';
 
+  .soupe-ui-table.hero-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 1;
+  }
+
+  .soupe-ui-table .hero-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 1;
+  }
+
+  .soupe-ui-table-body.hero-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 1;
+  }
+
   .soupe-ui-table table {
     display: table;
     table-layout: fixed;
@@ -1228,12 +1255,8 @@
     border: none !important;
   }
 
-  .soupe-ui-table-fixed table {
-    width: 0;
-  }
-
   .soupe-ui-table table th {
-    background-color: $grey-light;
+    background-color: $light;
   }
 
   .soupe-ui-table-header-centralized table th {
@@ -1250,7 +1273,7 @@
 
   .soupe-ui-table-border table th,
   .soupe-ui-table-border table td {
-    border-color: $grey;
+    border-color: $grey-lightest;
     border-style: solid;
     border-width: 1px 1px 0 0;
   }
@@ -1266,41 +1289,36 @@
   }
 
   .soupe-ui-table-content {
-    border: 1px solid $grey;
+    border: 1px solid $grey-light;
     border-radius: $radius;
   }
 
   .soupe-ui-table-fixed .soupe-ui-table-header-left,
   .soupe-ui-table-fixed .soupe-ui-table-header-center,
   .soupe-ui-table-fixed .soupe-ui-table-header-right {
-    border-bottom: 1px solid $grey;
+    border-bottom: 1px solid $grey-light;
   }
 
   .soupe-ui-table-header-left,
   .soupe-ui-table-body-left,
   .soupe-ui-table-footer-left {
-    border-right: 1px solid $grey;
+    border-right: 1px solid $grey-light;
   }
 
   .soupe-ui-table-header-right,
   .soupe-ui-table-body-right,
   .soupe-ui-table-footer-right {
-    border-left: 1px solid $grey;
+    border-left: 1px solid $grey-light;
   }
 
   .soupe-ui-table-footer-left,
   .soupe-ui-table-footer-center,
   .soupe-ui-table-footer-right {
-    border-top: 1px solid $grey;
+    border-top: 1px solid $grey-light;
   }
 
   .soupe-ui-table-scroll tr:last-child td {
     border-bottom-width: 1px !important;
-  }
-
-  .soupe-ui-table-header tr,
-  .soupe-ui-table-header tr th {
-    height: 35px;
   }
 
   .soupe-ui-table-no-right-border {
@@ -1313,41 +1331,12 @@
 
   .soupe-ui-table-colspan {
     text-overflow: clip;
-    background-color: $grey-light;
+    background-color: $grey-lighter;
   }
 
   .checkbox-column {
-    width: 35px;
+    width: 40px;
     text-align: center;
-  }
-
-  .pagination-bar > li {
-    padding-left: 0px;
-    padding-right: 5px;
-  }
-
-  .float-right.pagination-bar > li {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .pagination-bar a {
-    color: $grey-dark;
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .pagination-bar .menu li a {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .pagination-bar .menu li .menu li a {
-    padding: 10px;
-  }
-
-  .pagination-bar .is-active a {
-    color: $black;
   }
 
   .pagination-button {
@@ -1357,10 +1346,6 @@
     height: 32px;
   }
 
-  .pagination-button i {
-    font-size: 30px;
-  }
-
   .pagination-top {
     padding-top: 0px;
   }
@@ -1368,10 +1353,5 @@
   .pagination-top .pagination-bar,
   .pagination-top .operations {
     padding-bottom: 10px;
-  }
-
-  .pagination-bottom {
-    padding-top: 10px;
-    padding-bottom: 0px;
   }
 </style>
