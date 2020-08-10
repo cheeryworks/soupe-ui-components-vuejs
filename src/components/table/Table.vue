@@ -68,18 +68,22 @@
                 <tr v-for="(rowInHeader, i) in rowsInLeftHeader" :key="i">
                   <th
                     class="checkbox-column"
+                    :rowspan="rowsInLeftHeader.length"
                     v-if="
                       selectionConfigs &&
                       selectionConfigs.multipleSelect &&
-                      fixedLeftColumns >= 1
+                      fixedLeftColumns >= 1 &&
+                      i == 0
                     "
                   >
-                    <input
-                      v-if="selectionConfigs.selectAll"
-                      type="checkbox"
-                      :checked="checkedAll"
-                      @click="internalCheckingAll($event)"
-                    />
+                    <table-header-cell>
+                      <input
+                        v-if="selectionConfigs.selectAll"
+                        type="checkbox"
+                        :checked="checkedAll"
+                        @click="internalCheckingAll($event)"
+                      />
+                    </table-header-cell>
                   </th>
                   <th
                     v-for="(columnInHeader, j) in rowInHeader"
@@ -98,8 +102,13 @@
                       }
                     ]"
                   >
-                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                    <table-header-cell>
+                      {{
+                        columnInHeader.title ? columnInHeader.title : '&nbsp;'
+                      }}
+                    </table-header-cell>
                   </th>
+                  <th>X</th>
                 </tr>
               </thead>
             </table>
@@ -133,18 +142,21 @@
                 <tr v-for="(rowInHeader, i) in rowsInCenterHeader" :key="i">
                   <th
                     class="checkbox-column"
+                    :rowspan="rowsInCenterHeader.length"
                     v-if="
                       selectionConfigs &&
                       selectionConfigs.multipleSelect &&
                       fixedLeftColumns < 1
                     "
                   >
-                    <input
-                      v-if="selectionConfigs.selectAll"
-                      type="checkbox"
-                      :checked="checkedAll"
-                      @click="internalCheckingAll($event)"
-                    />
+                    <table-header-cell>
+                      <input
+                        v-if="selectionConfigs.selectAll"
+                        type="checkbox"
+                        :checked="checkedAll"
+                        @click="internalCheckingAll($event)"
+                      />
+                    </table-header-cell>
                   </th>
                   <th
                     v-for="(columnInHeader, j) in rowInHeader"
@@ -169,7 +181,11 @@
                       }
                     ]"
                   >
-                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                    <table-header-cell>
+                      {{
+                        columnInHeader.title ? columnInHeader.title : '&nbsp;'
+                      }}
+                    </table-header-cell>
                   </th>
                   <th v-if="bodyScrollableV" style="text-overflow: clip;">
                     &nbsp;
@@ -205,8 +221,13 @@
                       }
                     ]"
                   >
-                    {{ columnInHeader.title ? columnInHeader.title : '&nbsp;' }}
+                    <table-header-cell>
+                      {{
+                        columnInHeader.title ? columnInHeader.title : '&nbsp;'
+                      }}
+                    </table-header-cell>
                   </th>
+                  <th>X</th>
                 </tr>
               </thead>
             </table>
@@ -577,8 +598,13 @@
 </template>
 
 <script>
+  import TableHeaderCell from './TableHeaderCell'
+
   export default {
     name: 'soupe-ui-table',
+    components: {
+      TableHeaderCell
+    },
     props: {
       columns: {
         type: Array,
@@ -1257,6 +1283,10 @@
 
   .soupe-ui-table table th {
     background-color: $light;
+  }
+
+  .soupe-ui-table-header table {
+    height: 100vh;
   }
 
   .soupe-ui-table-header-centralized table th {

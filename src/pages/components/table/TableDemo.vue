@@ -23,14 +23,19 @@
             width: 100
           },
           {
-            title: 'B',
-            name: 'b',
-            width: 200
-          },
-          {
-            title: 'C',
-            name: 'c',
-            width: 200
+            title: 'BC',
+            columns: [
+              {
+                title: 'B',
+                name: 'b',
+                width: 200
+              },
+              {
+                title: 'C',
+                name: 'c',
+                width: 200
+              }
+            ]
           },
           {
             title: 'D',
