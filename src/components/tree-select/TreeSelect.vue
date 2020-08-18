@@ -170,9 +170,9 @@
           this.currentValue = $record.getRecordValue(option, this.valueProperty)
           this.name = $record.getRecordDisplayName(option, this.displayProperty)
 
-          this.$emit('input', this.currentValue)
+          this.$emit('soupe-ui-tree-select-value-changed', this.currentValue)
 
-          this.$emit('select', option)
+          this.$emit('soupe-ui-tree-select-item-selected', option)
 
           if (this.closeOnClick && this.$refs.select) {
             this.$refs.select.close()

@@ -159,7 +159,7 @@
       },
       select(record) {
         if (this.itemClickable && this.itemClickable(record)) {
-          this.$emit('select', record)
+          this.$emit('soupe-ui-tree-item-selected', record)
         }
       }
     }

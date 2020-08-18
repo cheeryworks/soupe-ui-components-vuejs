@@ -765,7 +765,7 @@
         }
       },
       'selectionConfigs.multipleSelect': function () {
-        this.$emit('page-changed', 1, this.size)
+        this.$emit('soupe-ui-table-page-changed', 1, this.size)
       }
     },
     computed: {
@@ -1202,17 +1202,17 @@
         if (this.paging && pageSize + '' !== this.size + '') {
           this.$cookie.set('page_size', pageSize)
 
-          this.$emit('page-changed', 1, pageSize)
+          this.$emit('soupe-ui-table-page-changed', 1, pageSize)
         }
       },
       prevPage() {
         if (this.page > 1) {
-          this.$emit('page-changed', this.page - 1, this.size)
+          this.$emit('soupe-ui-table-page-changed', this.page - 1, this.size)
         }
       },
       nextPage() {
         if (this.page < this.totalPage) {
-          this.$emit('page-changed', this.page + 1, this.size)
+          this.$emit('soupe-ui-table-page-changed', this.page + 1, this.size)
         }
       },
       onCheck(event, record) {

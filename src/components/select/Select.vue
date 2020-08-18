@@ -1,6 +1,6 @@
 <template>
   <div
-    class="soupe-ui-select columns is-gapless is-vcentered"
+    class="soupe-ui-select columns is-gapless is-vcentered mx-0 my-0"
     :style="{ width: width }"
     v-click-outside="close"
   >
@@ -13,7 +13,7 @@
           class="button columns is-gapless"
           aria-haspopup="true"
           :aria-controls="id"
-          :style="{ width: width }"
+          :style="{ width: optionWidth }"
           @click="open"
         >
           <div class="column has-text-left">{{ name }}</div>
@@ -142,7 +142,7 @@
       this.setValue()
     },
     directives: {
-      'click-outside': {
+      clickOutside: {
         bind: function (el, binding) {
           const bubble = binding.modifiers.bubble
           const handler = (e) => {
@@ -204,9 +204,9 @@
           this.name = $record.getRecordDisplayName(option, this.displayProperty)
 
           if (!this.readonly) {
-            this.$emit('input', this.currentValue)
+            this.$emit('soupe-ui-select-value-changed', this.currentValue)
 
-            this.$emit('select', option, isClick)
+            this.$emit('soupe-ui-select-item-selected', option, isClick)
 
             if (this.closeOnClick) {
               this.close()
@@ -237,6 +237,10 @@
 
   .soupe-ui-select-options > .dropdown-menu {
     min-width: auto;
+  }
+
+  .soupe-ui-select-options > .dropdown-menu > .dropdown-content {
+    padding: 0px;
   }
 
   .soupe-ui-select .button {

@@ -133,7 +133,7 @@
           this.initialSelected = true
         }
 
-        this.$emit('select', record)
+        this.$emit('soupe-ui-tree-item-selected', record)
       },
       select(record, noEmit) {
         if (record) {
@@ -146,7 +146,7 @@
         }
 
         if (!noEmit) {
-          this.$emit('select', record)
+          this.$emit('soupe-ui-tree-item-selected', record)
         }
       }
     }
