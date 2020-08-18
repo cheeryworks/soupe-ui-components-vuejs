@@ -7,9 +7,6 @@ import ComponentDemos from '@/pages/components/index'
 Vue.use(Router)
 
 export default new Router({
-  saveScrollPosition: true,
-  history: true,
-  mode: 'history',
   routes: [
     {
       path: '/',
