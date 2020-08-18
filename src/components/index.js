@@ -13,6 +13,9 @@ import CardHeader from '@/components/card/CardHeader'
 import CardContent from '@/components/card/CardContent'
 import ContextMenu from '@/components/context-menu/ContextMenu.js'
 import MessageBox from '@/components/message-box/MessageBox.js'
+import Wizard from '@/components/wizard/Wizard'
+import WizardItem from '@/components/wizard/WizardItem'
+import DatePicker from '@/components/date-picker/DatePicker'
 
 const components = {
   Select,
@@ -28,8 +31,9 @@ const components = {
   Card,
   CardHeader,
   CardContent,
-  ContextMenu,
-  MessageBox
+  Wizard,
+  WizardItem,
+  DatePicker
 }
 
 const install = function (Vue) {

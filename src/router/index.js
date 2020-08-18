@@ -42,7 +42,7 @@ export default new Router({
           name: 'component_tree_select',
           component: ComponentDemos.TreeSelectDemo,
           meta: {
-            displayName: 'TreeSelect'
+            displayName: 'Tree Select'
           }
         },
         {
@@ -66,7 +66,7 @@ export default new Router({
           name: 'component_context-menu',
           component: ComponentDemos.ContextMenuDemo,
           meta: {
-            displayName: 'ContextMenu'
+            displayName: 'Context Menu'
           }
         },
         {
@@ -74,7 +74,7 @@ export default new Router({
           name: 'component_message-box',
           component: ComponentDemos.MessageBoxDemo,
           meta: {
-            displayName: 'MessageBox'
+            displayName: 'Message Box'
           }
         },
         {
@@ -91,6 +91,22 @@ export default new Router({
           component: ComponentDemos.AccordionDemo,
           meta: {
             displayName: 'Accordion'
+          }
+        },
+        {
+          path: '/components/wizard',
+          name: 'component_wizard',
+          component: ComponentDemos.WizardDemo,
+          meta: {
+            displayName: 'Wizard'
+          }
+        },
+        {
+          path: '/components/date-picker',
+          name: 'component_date-picker',
+          component: ComponentDemos.DatePickerDemo,
+          meta: {
+            displayName: 'Date Picker'
           }
         }
       ]

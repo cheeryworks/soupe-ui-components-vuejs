@@ -8,6 +8,8 @@ import ContextMenuDemo from '@/pages/components/context-menu/ContextMenuDemo'
 import MessageBoxDemo from '@/pages/components/message-box/MessageBoxDemo'
 import CardDemo from '@/pages/components/card/CardDemo'
 import AccordionDemo from '@/pages/components/accordion/AccordionDemo'
+import WizardDemo from '@/pages/components/wizard/WizardDemo'
+import DatePickerDemo from '@/pages/components/date-picker/DatePickerDemo'
 
 export default {
   Introduction,
@@ -19,5 +21,7 @@ export default {
   ContextMenuDemo,
   MessageBoxDemo,
   CardDemo,
-  AccordionDemo
+  AccordionDemo,
+  WizardDemo,
+  DatePickerDemo
 }
