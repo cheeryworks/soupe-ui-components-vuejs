@@ -1,5 +1,5 @@
 <template>
-  <span class="soupe-ui-tag tag" @click="$emit('soupe-ui-tag-click')">
+  <span class="soupe-ui-tag tag" @click="$emit('click')">
     <slot></slot>
     <button class="delete is-small" v-if="selected"></button>
   </span>

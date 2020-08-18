@@ -52,7 +52,7 @@
           }
         }
 
-        this.$emit('soupe-ui-wizard-item-click')
+        this.$emit('item-click')
       }
     }
   }

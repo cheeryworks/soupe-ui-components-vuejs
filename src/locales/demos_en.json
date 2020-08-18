@@ -1,0 +1,14 @@
+{
+  "soupe": {
+    "ui": {
+      "demos": {
+        "context_menu": {
+          "add-child": "Add Child",
+          "move-up": "Move Up",
+          "move-down": "Move Down",
+          "delete": "Delete"
+        }
+      }
+    }
+  }
+}

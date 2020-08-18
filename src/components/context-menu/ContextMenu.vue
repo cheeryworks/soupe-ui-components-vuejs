@@ -1,13 +1,13 @@
 <template>
-  <div v-show="showMenu" class="soupe-ui-context-menu menu">
+  <div class="soupe-ui-context-menu menu">
     <ul class="menu-list">
       <li
-        v-for="(menu, i) in showMenuArray"
+        v-for="(menu, i) in menus"
         :key="i"
         class="is-submenu-item is-dropdown-submenu-item"
-        @click="handle(menu.action)"
+        @click="menu.action()"
       >
-        <a>{{ menu.text }}</a>
+        <a>{{ menu.title }}</a>
       </li>
     </ul>
   </div>
@@ -16,16 +16,8 @@
   export default {
     data() {
       return {
-        showMenuArray: [{ text: '11', action: 'createChild' }],
-        clickTimes: 0,
-        showMenu: true,
-        handle: function (action) {
-          alert(
-            'you may need to give a method [handleMenu] to this menu [' +
-              action +
-              ']'
-          )
-        }
+        menus: [],
+        clickTimes: 0
       }
     },
     created() {
@@ -47,16 +39,7 @@
       },
       initMenus: function (menus) {
         if (Array.isArray(menus)) {
-          this.showMenuArray = menus
-        } else if (typeof menus === 'string') {
-          if (menus === 'baseTreeMenu') {
-            this.showMenuArray = [
-              { text: this.$t('global.add-child'), action: 'createChild' },
-              { text: this.$t('global.move-up'), action: 'moveUp' },
-              { text: this.$t('global.move-down'), action: 'moveDown' },
-              { text: this.$t('global.delete'), action: 'delete' }
-            ]
-          }
+          this.menus = menus
         }
       }
     }
@@ -68,26 +51,17 @@
 
   .soupe-ui-context-menu {
     position: absolute;
-    z-index: 100;
+    z-index: 1000;
   }
 
   .soupe-ui-context-menu .menu-list {
     background-color: $white;
-    border-radius: 2px;
-    border: solid 1px $grey;
-  }
-
-  .soupe-ui-context-menu .menu-list > li > a {
-    padding: 5px 1.2rem;
-    color: $black;
-    font-size: 14px;
-  }
-
-  .soupe-ui-context-menu .menu-list > li:hover {
-    background-color: $grey-light;
+    border: solid 1px $light;
+    border-radius: $radius;
   }
 
   .soupe-ui-context-menu .menu-list > li > a:hover {
-    font-weight: bold;
+    font-weight: 600;
+    user-select: none;
   }
 </style>

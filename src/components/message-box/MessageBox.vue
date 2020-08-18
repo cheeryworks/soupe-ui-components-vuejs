@@ -82,15 +82,15 @@
     computed: {
       defaultTitle() {
         if (this.type === 'confirm') {
-          return this.$t('global.components.message.title.confirm')
+          return this.$t('soupe.ui.components.message.title.confirm')
         } else if (this.type === 'success') {
-          return this.$t('global.components.message.title.success')
+          return this.$t('soupe.ui.components.message.title.success')
         } else if (this.type === 'warning') {
-          return this.$t('global.components.message.title.warning')
+          return this.$t('soupe.ui.components.message.title.warning')
         } else if (this.type === 'error') {
-          return this.$t('global.components.message.title.error')
+          return this.$t('soupe.ui.components.message.title.error')
         } else {
-          return this.$t('global.components.message.title.default')
+          return this.$t('soupe.ui.components.message.title.default')
         }
       },
       messageTitleIconClass() {

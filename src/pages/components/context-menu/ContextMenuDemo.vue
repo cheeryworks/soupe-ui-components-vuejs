@@ -58,14 +58,31 @@
 
         self.$contextMenu(event, {
           menus: [
-            { text: this.$t('global.add-child'), action: 'createChild' },
-            { text: this.$t('global.move-up'), action: 'moveUp' },
-            { text: this.$t('global.move-down'), action: 'moveDown' },
-            { text: this.$t('global.delete'), action: 'delete' }
-          ],
-          handle: function (action) {
-            console.log(action + ' on [' + record + ']')
-          }
+            {
+              title: this.$t('soupe.ui.demos.context_menu.add-child'),
+              action: function () {
+                console.log('Add child on [' + record + ']')
+              }
+            },
+            {
+              title: this.$t('soupe.ui.demos.context_menu.move-up'),
+              action: function () {
+                console.log('Move up on [' + record + ']')
+              }
+            },
+            {
+              title: this.$t('soupe.ui.demos.context_menu.move-down'),
+              action: function () {
+                console.log('Move down on [' + record + ']')
+              }
+            },
+            {
+              title: this.$t('soupe.ui.demos.context_menu.delete'),
+              action: function () {
+                console.log('Delete on [' + record + ']')
+              }
+            }
+          ]
         })
       }
     }

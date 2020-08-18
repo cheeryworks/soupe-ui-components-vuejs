@@ -8,14 +8,16 @@
       <label class="label">Select with customized labels</label>
       <soupe-ui-select
         :left-label="
-          $t('global.components.table.pagination_pages', {
+          $t('soupe.ui.components.table.pagination_pages', {
             currentPage: table.page,
             totalPage: table.totalPage > 0 ? table.totalPage : 1
           }) +
-          $t('global.components.table.pagination_page_sizes_left_bottom_label')
+            $t(
+              'soupe.ui.components.table.pagination_page_sizes_left_bottom_label'
+            )
         "
         :right-label="
-          $t('global.components.table.pagination_page_sizes_right_label')
+          $t('soupe.ui.components.table.pagination_page_sizes_right_label')
         "
         :options="table.pageSizes"
       ></soupe-ui-select>

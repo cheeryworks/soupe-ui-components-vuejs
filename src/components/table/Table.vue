@@ -23,11 +23,13 @@
             <div class="column">
               <soupe-ui-select
                 :left-label="
-                  $t('global.components.table.pagination_page_sizes_left_label')
+                  $t(
+                    'soupe.ui.components.table.pagination_page_sizes_left_label'
+                  )
                 "
                 :right-label="
                   $t(
-                    'global.components.table.pagination_page_sizes_right_label'
+                    'soupe.ui.components.table.pagination_page_sizes_right_label'
                   )
                 "
                 :value="size"
@@ -531,7 +533,7 @@
         <div class="column">
           <div class="pagination-bar">
             {{
-              $t('global.components.table.pagination_records', {
+              $t('soupe.ui.components.table.pagination_records', {
                 startNumber: startNumber,
                 endNumber: endNumber,
                 total: total
@@ -545,7 +547,7 @@
           >
             <div class="column is-narrow">
               {{
-                $t('global.components.table.pagination_pages', {
+                $t('soupe.ui.components.table.pagination_pages', {
                   currentPage: page,
                   totalPage: totalPage > 0 ? totalPage : 1
                 })
@@ -555,12 +557,12 @@
               <soupe-ui-select
                 :left-label="
                   $t(
-                    'global.components.table.pagination_page_sizes_left_bottom_label'
+                    'soupe.ui.components.table.pagination_page_sizes_left_bottom_label'
                   )
                 "
                 :right-label="
                   $t(
-                    'global.components.table.pagination_page_sizes_right_label'
+                    'soupe.ui.components.table.pagination_page_sizes_right_label'
                   )
                 "
                 :value="size"
@@ -765,7 +767,7 @@
         }
       },
       'selectionConfigs.multipleSelect': function () {
-        this.$emit('soupe-ui-table-page-changed', 1, this.size)
+        this.$emit('page-changed', 1, this.size)
       }
     },
     computed: {
@@ -1202,17 +1204,17 @@
         if (this.paging && pageSize + '' !== this.size + '') {
           this.$cookie.set('page_size', pageSize)
 
-          this.$emit('soupe-ui-table-page-changed', 1, pageSize)
+          this.$emit('page-changed', 1, pageSize)
         }
       },
       prevPage() {
         if (this.page > 1) {
-          this.$emit('soupe-ui-table-page-changed', this.page - 1, this.size)
+          this.$emit('page-changed', this.page - 1, this.size)
         }
       },
       nextPage() {
         if (this.page < this.totalPage) {
-          this.$emit('soupe-ui-table-page-changed', this.page + 1, this.size)
+          this.$emit('page-changed', this.page + 1, this.size)
         }
       },
       onCheck(event, record) {
@@ -1233,7 +1235,6 @@
       checkingAll(checked, records) {
         for (let record of records) {
           this.$set(record, 'checked', checked)
-          console.log(record + ':' + record.checked)
         }
       },
       internalCheckingAll(event) {

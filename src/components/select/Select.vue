@@ -188,7 +188,7 @@
         }
 
         if (!this.currentValue) {
-          this.name = this.$t('global.components.select.options.empty')
+          this.name = this.$t('soupe.ui.components.select.options.empty')
         }
       },
       renderName(option) {
@@ -204,9 +204,9 @@
           this.name = $record.getRecordDisplayName(option, this.displayProperty)
 
           if (!this.readonly) {
-            this.$emit('soupe-ui-select-value-changed', this.currentValue)
+            this.$emit('value-changed', this.currentValue)
 
-            this.$emit('soupe-ui-select-item-selected', option, isClick)
+            this.$emit('item-selected', option, isClick)
 
             if (this.closeOnClick) {
               this.close()

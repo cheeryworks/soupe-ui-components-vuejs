@@ -1,0 +1,14 @@
+{
+  "soupe": {
+    "ui": {
+      "demos": {
+        "context_menu": {
+          "add-child": "添加子项",
+          "move-up": "上移",
+          "move-down": "下移",
+          "delete": "删除"
+        }
+      }
+    }
+  }
+}

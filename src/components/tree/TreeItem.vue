@@ -42,7 +42,7 @@
         :valueProperty="valueProperty"
         :displayProperty="displayProperty"
         :itemClickable="itemClickable"
-        @select="select"
+        @item-selected="select"
       >
         <template slot="soupe-ui-tree-item-controls" slot-scope="item">
           <slot name="soupe-ui-tree-item-controls" :record="item.record"></slot>
@@ -159,7 +159,7 @@
       },
       select(record) {
         if (this.itemClickable && this.itemClickable(record)) {
-          this.$emit('soupe-ui-tree-item-selected', record)
+          this.$emit('item-selected', record)
         }
       }
     }

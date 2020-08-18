@@ -9,14 +9,18 @@ function loadLocaleMessages() {
     true,
     /[A-Za-z0-9-_,\s]+\.json$/i
   )
+
+  let merge = require('merge')
+
   const messages = {}
   locales.keys().forEach((key) => {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
     if (matched && matched.length > 1) {
-      const locale = matched[1]
-      messages[locale] = locales(key)
+      const locale = matched[1].split('_')[1]
+      messages[locale] = merge.recursive(true, messages[locale], locales(key))
     }
   })
+
   return messages
 }
 

@@ -241,7 +241,7 @@
         value = `${this.tmpYear}-${('0' + (this.month + 1)).slice(-2)}-${(
           '0' + this.date
         ).slice(-2)}`
-        this.$emit('soupe-ui-date-picker-value-changed', value)
+        this.$emit('value-changed', value)
 
         this.currentValue = value
 
@@ -277,7 +277,7 @@
         return !(condition1 && condition2)
       },
       clear() {
-        this.$emit('soupe-ui-date-picker-value-clear', '')
+        this.$emit('value-unset', '')
       },
       formatDate(date) {
         if (typeof date === 'string') {
@@ -292,29 +292,29 @@
       },
       translateWeek(item) {
         return {
-          0: this.$t('global.components.date_picker.weeks.sun'),
-          1: this.$t('global.components.date_picker.weeks.mon'),
-          2: this.$t('global.components.date_picker.weeks.tue'),
-          3: this.$t('global.components.date_picker.weeks.wed'),
-          4: this.$t('global.components.date_picker.weeks.thu'),
-          5: this.$t('global.components.date_picker.weeks.fri'),
-          6: this.$t('global.components.date_picker.weeks.sat')
+          0: this.$t('soupe.ui.components.date_picker.weeks.sun'),
+          1: this.$t('soupe.ui.components.date_picker.weeks.mon'),
+          2: this.$t('soupe.ui.components.date_picker.weeks.tue'),
+          3: this.$t('soupe.ui.components.date_picker.weeks.wed'),
+          4: this.$t('soupe.ui.components.date_picker.weeks.thu'),
+          5: this.$t('soupe.ui.components.date_picker.weeks.fri'),
+          6: this.$t('soupe.ui.components.date_picker.weeks.sat')
         }[item]
       },
       translateMonth(item) {
         return {
-          1: this.$t('global.components.date_picker.months.jan'),
-          2: this.$t('global.components.date_picker.months.feb'),
-          3: this.$t('global.components.date_picker.months.mar'),
-          4: this.$t('global.components.date_picker.months.apr'),
-          5: this.$t('global.components.date_picker.months.may'),
-          6: this.$t('global.components.date_picker.months.jun'),
-          7: this.$t('global.components.date_picker.months.jul'),
-          8: this.$t('global.components.date_picker.months.aug'),
-          9: this.$t('global.components.date_picker.months.sep'),
-          10: this.$t('global.components.date_picker.months.oct'),
-          11: this.$t('global.components.date_picker.months.nov'),
-          12: this.$t('global.components.date_picker.months.dec')
+          1: this.$t('soupe.ui.components.date_picker.months.jan'),
+          2: this.$t('soupe.ui.components.date_picker.months.feb'),
+          3: this.$t('soupe.ui.components.date_picker.months.mar'),
+          4: this.$t('soupe.ui.components.date_picker.months.apr'),
+          5: this.$t('soupe.ui.components.date_picker.months.may'),
+          6: this.$t('soupe.ui.components.date_picker.months.jun'),
+          7: this.$t('soupe.ui.components.date_picker.months.jul'),
+          8: this.$t('soupe.ui.components.date_picker.months.aug'),
+          9: this.$t('soupe.ui.components.date_picker.months.sep'),
+          10: this.$t('soupe.ui.components.date_picker.months.oct'),
+          11: this.$t('soupe.ui.components.date_picker.months.nov'),
+          12: this.$t('soupe.ui.components.date_picker.months.dec')
         }[item]
       }
     },
@@ -393,7 +393,7 @@
         this.maxDate = Number(maxArr[2])
 
         if (!this.value) {
-          this.$emit('soupe-ui-date-picker-value-changed', '')
+          this.$emit('value-changed', '')
         }
       })
     }
