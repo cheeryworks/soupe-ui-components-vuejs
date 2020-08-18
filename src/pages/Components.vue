@@ -14,19 +14,27 @@
               <span class="panel-icon">
                 <i class="fas fa-angle-right" aria-hidden="true"></i>
               </span>
-              Introduction
+              {{
+                $t('soupe.ui.demos.menus.components.menus.introduction.title')
+              }}
             </router-link>
             <router-link
               v-for="demo of demos"
-              :to="{ name: demo.key }"
-              :key="demo.key"
+              :to="{ name: demo.name }"
+              :key="demo.name"
               class="panel-block"
-              :class="{ 'is-active': $route.name === demo.key }"
+              :class="{ 'is-active': $route.name === demo.name }"
             >
               <span class="panel-icon">
                 <i class="fas fa-angle-right" aria-hidden="true"></i>
               </span>
-              {{ demo.name }}
+              {{
+                $t(
+                  'soupe.ui.demos.menus.components.menus.' +
+                    demo.name +
+                    '.title'
+                )
+              }}
             </router-link>
             <p class="panel-block"></p>
           </div>
@@ -60,8 +68,7 @@
       for (let demoRouteConfig of demosRouteConfig.children) {
         let demo = {}
 
-        demo.key = demoRouteConfig.name
-        demo.name = demoRouteConfig.meta.displayName
+        demo.name = demoRouteConfig.name
 
         this.demos.push(demo)
       }

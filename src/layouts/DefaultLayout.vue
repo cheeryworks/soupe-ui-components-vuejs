@@ -13,14 +13,33 @@
             to="/"
             class="navbar-item"
             :class="{ 'is-active': $route.matched[0].name === 'home' }"
-            >Home</router-link
+            >{{ $t('soupe.ui.demos.menus.home.title') }}</router-link
           >
           <router-link
             to="/components"
             class="navbar-item"
             :class="{ 'is-active': $route.matched[0].name === 'components' }"
-            >Components</router-link
+            >{{ $t('soupe.ui.demos.menus.components.title') }}</router-link
           >
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="control has-icons-left">
+            <div class="select is-primary">
+              <select v-model="lang">
+                <option
+                  v-for="(lang, i) in langs"
+                  :key="`Lang${i}`"
+                  :value="lang"
+                  >{{ lang }}</option
+                >
+              </select>
+            </div>
+            <span class="icon is-left">
+              <i class="fas fa-globe"></i>
+            </span>
+          </div>
         </div>
       </div>
     </nav>
@@ -32,3 +51,32 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        langs: ['en', 'zh'],
+        lang: 'en'
+      }
+    },
+    created() {
+      if (this.$cookie.get('lang')) {
+        this.lang = this.$cookie.get('lang')
+      }
+    },
+    watch: {
+      lang: function(newVal) {
+        if (!this.$cookie.get('lang') || newVal != this.$cookie.get('lang')) {
+          this.$cookie.set('lang', newVal, { expires: '1Y' })
+          this.$i18n.locale = newVal
+        }
+      }
+    },
+    methods: {
+      setLang() {
+        this.$cookie.set('lang')
+      }
+    }
+  }
+</script>

@@ -20,91 +20,58 @@ export default new Router({
       children: [
         {
           path: '/components/select',
-          name: 'component_select',
-          component: ComponentDemos.SelectDemo,
-          meta: {
-            displayName: 'Select'
-          }
+          name: 'select',
+          component: ComponentDemos.SelectDemo
         },
         {
           path: '/components/tree',
-          name: 'component_tree',
-          component: ComponentDemos.TreeDemo,
-          meta: {
-            displayName: 'Tree'
-          }
+          name: 'tree',
+          component: ComponentDemos.TreeDemo
         },
         {
           path: '/components/tree-select',
-          name: 'component_tree_select',
-          component: ComponentDemos.TreeSelectDemo,
-          meta: {
-            displayName: 'Tree Select'
-          }
+          name: 'tree-select',
+          component: ComponentDemos.TreeSelectDemo
         },
         {
           path: '/components/table',
-          name: 'component_table',
-          component: ComponentDemos.TableDemo,
-          meta: {
-            displayName: 'Table'
-          }
+          name: 'table',
+          component: ComponentDemos.TableDemo
         },
         {
           path: '/components/tag',
-          name: 'component_tag',
-          component: ComponentDemos.TagDemo,
-          meta: {
-            displayName: 'Tag'
-          }
+          name: 'tag',
+          component: ComponentDemos.TagDemo
         },
         {
           path: '/components/context-menu',
-          name: 'component_context-menu',
-          component: ComponentDemos.ContextMenuDemo,
-          meta: {
-            displayName: 'Context Menu'
-          }
+          name: 'context-menu',
+          component: ComponentDemos.ContextMenuDemo
         },
         {
           path: '/components/message-box',
-          name: 'component_message-box',
-          component: ComponentDemos.MessageBoxDemo,
-          meta: {
-            displayName: 'Message Box'
-          }
+          name: 'message-box',
+          component: ComponentDemos.MessageBoxDemo
         },
         {
           path: '/components/card',
-          name: 'component_card',
-          component: ComponentDemos.CardDemo,
-          meta: {
-            displayName: 'Card'
-          }
+          name: 'card',
+          component: ComponentDemos.CardDemo
         },
         {
           path: '/components/accordion',
-          name: 'component_accordion',
-          component: ComponentDemos.AccordionDemo,
-          meta: {
-            displayName: 'Accordion'
-          }
+          name: 'accordion',
+          component: ComponentDemos.AccordionDemo
         },
         {
           path: '/components/wizard',
-          name: 'component_wizard',
-          component: ComponentDemos.WizardDemo,
-          meta: {
-            displayName: 'Wizard'
-          }
+          name: 'wizard',
+          component: ComponentDemos.WizardDemo
         },
         {
           path: '/components/date-picker',
-          name: 'component_date-picker',
-          component: ComponentDemos.DatePickerDemo,
-          meta: {
-            displayName: 'Date Picker'
-          }
+          name: 'date-picker',
+          component: ComponentDemos.DatePickerDemo
         }
       ]
     },
