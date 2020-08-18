@@ -63,6 +63,7 @@
     created() {
       if (this.$cookie.get('lang')) {
         this.lang = this.$cookie.get('lang')
+        this.$i18n.locale = this.lang
       }
     },
     watch: {
