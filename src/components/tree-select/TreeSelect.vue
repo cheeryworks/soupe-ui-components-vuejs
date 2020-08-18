@@ -1,6 +1,7 @@
 <template>
   <soupe-ui-select
     class="soupe-ui-tree-select"
+    ref="select"
     :readonly="readonly"
     :border="border"
     :width="width"
@@ -8,7 +9,7 @@
     :right-label="rightLabel"
     :value="currentValue"
     :customized-name="name"
-    :close-on-click="false"
+    :close-on-click="closeOnClick"
   >
     <soupe-ui-tree
       ref="selectableTree"
@@ -173,16 +174,10 @@
 
           this.$emit('select', option)
 
-          if (this.closeOnClick) {
-            this.close()
+          if (this.closeOnClick && this.$refs.select) {
+            this.$refs.select.close()
           }
         }
-      },
-      close() {
-        // try {
-        //   $(this.$el).foundation('_hide')
-        // } catch (e) {
-        // }
       }
     }
   }
