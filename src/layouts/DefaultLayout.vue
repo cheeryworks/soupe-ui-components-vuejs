@@ -2,10 +2,10 @@
   <div class="hero soupe-ui-layout-container">
     <nav class="hero-head navbar soupe-ui-layout-header is-dark">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <router-link to="/" class="navbar-item">
           <img src="@/assets/logo.png" class="logo" alt />
           Soupe UI Components (VueJS)
-        </a>
+        </router-link>
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
