@@ -24,21 +24,34 @@
     },
     mounted() {
       this.setActive(this.$parent.currentActive)
+
+      window.addEventListener('resize', this.setHeight)
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.setHeight)
     },
     methods: {
       setActive(active) {
         this.active = active
 
+        this.setHeight()
+      },
+      setHeight() {
+        let heightOfInactiveItems = 0
+
+        for (let child of this.$parent.$parent.$children) {
+          heightOfInactiveItems += child.$children[0].$el.clientHeight
+        }
+
         if (this.active) {
           let height =
             this.$parent.$parent.$el.clientHeight -
-            this.$parent.$el.clientHeight * 4
+            heightOfInactiveItems -
+            this.$parent.$parent.$children.length
           this.height = height + 'px'
         } else {
           this.height = '0px'
         }
-
-        console.log(this.height)
       }
     }
   }
