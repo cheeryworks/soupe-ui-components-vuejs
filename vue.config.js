@@ -1,4 +1,5 @@
 module.exports = {
+  outputDir: 'docs',
   chainWebpack: (config) => {
     config.module
       .rule('images')
@@ -10,10 +11,9 @@ module.exports = {
       return args
     })
   },
-
   pluginOptions: {
     i18n: {
-      locale: 'zh',
+      locale: 'en',
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableInSFC: true
