@@ -1,6 +1,5 @@
 module.exports = {
-  publicPath:
-    process.env.NODE_ENV === 'production' ? '/soupe-ui-components-vuejs/' : '/',
+  publicPath: '',
   outputDir: 'docs',
   chainWebpack: (config) => {
     config.module
