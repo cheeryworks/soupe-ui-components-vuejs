@@ -106,4 +106,8 @@
     overflow-y: auto;
     flex-shrink: 1;
   }
+
+  .tile {
+    min-height: auto;
+  }
 </style>
