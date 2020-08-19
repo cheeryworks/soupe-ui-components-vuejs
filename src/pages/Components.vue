@@ -90,6 +90,8 @@
 </script>
 
 <style scoped lang="scss">
+  @import '~bulma/sass/utilities/_all';
+
   .soupe-ui-layout-sidebar.hero > .hero-body {
     overflow-x: hidden;
     overflow-y: auto;
@@ -109,5 +111,9 @@
 
   .tile {
     min-height: auto;
+  }
+
+  .panel-block {
+    color: $dark !important;
   }
 </style>
