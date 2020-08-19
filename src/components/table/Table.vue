@@ -137,6 +137,9 @@
                   }"
                 />
               </colgroup>
+              <colgroup v-if="bodyScrollableV">
+                <col style="width: 100px;" />
+              </colgroup>
               <thead>
                 <tr v-for="(rowInHeader, i) in rowsInCenterHeader" :key="i">
                   <th
@@ -185,6 +188,9 @@
                         columnInHeader.title ? columnInHeader.title : '&nbsp;'
                       }}
                     </table-header-cell>
+                  </th>
+                  <th v-if="bodyScrollableV" style="text-overflow: clip;">
+                    &nbsp;
                   </th>
                 </tr>
               </thead>
@@ -316,6 +322,12 @@
                       </td>
                     </template>
                   </template>
+                </tr>
+                <tr v-if="bodyScrollableV">
+                  <td
+                    :colspan="columnsInLeftBody.length"
+                    class="soupe-ui-table-colspan"
+                  ></td>
                 </tr>
               </tbody>
             </table>
@@ -484,6 +496,12 @@
                       </td>
                     </template>
                   </template>
+                </tr>
+                <tr v-if="bodyScrollableV">
+                  <td
+                    :colspan="columnsInRightBody.length"
+                    class="soupe-ui-table-colspan"
+                  ></td>
                 </tr>
               </tbody>
             </table>
@@ -1338,6 +1356,11 @@
 
   .soupe-ui-table-header-no-right-border {
     border-right: none !important;
+  }
+
+  .soupe-ui-table-colspan {
+    text-overflow: clip;
+    background-color: transparent;
   }
 
   .checkbox-column {
