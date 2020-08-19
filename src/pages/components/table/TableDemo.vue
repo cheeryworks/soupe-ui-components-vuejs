@@ -4,7 +4,7 @@
     paging
     pageSizeInBottom
     :fixedLeftColumns="1"
-    :fixedRightColumns="1"
+    :fixedRightColumns="2"
     :columns="columns"
     :records="records"
     :selectionConfigs="selectionConfigs"
@@ -50,6 +50,26 @@
           {
             title: 'F',
             name: 'f',
+            width: 200
+          },
+          {
+            title: 'G',
+            name: 'g',
+            width: 200
+          },
+          {
+            title: 'H',
+            name: 'h',
+            width: 200
+          },
+          {
+            title: 'I',
+            name: 'i',
+            width: 100
+          },
+          {
+            title: 'J',
+            name: 'j',
             width: 100
           }
         ],
@@ -64,7 +84,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -72,7 +96,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -80,7 +108,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -88,7 +120,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -96,7 +132,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -104,7 +144,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -112,7 +156,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -120,7 +168,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -128,7 +180,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -136,7 +192,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -144,7 +204,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -152,7 +216,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -160,7 +228,11 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           },
           {
             a: 'A',
@@ -168,7 +240,119 @@
             c: 'C',
             d: 'D',
             e: 'E',
-            f: 'F'
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
+          },
+          {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J'
           }
         ]
       }
