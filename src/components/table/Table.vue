@@ -325,7 +325,11 @@
                 </tr>
                 <tr v-if="bodyScrollableV">
                   <td
-                    :colspan="columnsInLeftBody.length + 1"
+                    :colspan="
+                      selectionConfigs && selectionConfigs.multipleSelect
+                        ? columnsInLeftBody.length + 1
+                        : columnsInLeftBody.length
+                    "
                     class="soupe-ui-table-colspan"
                   ></td>
                 </tr>
