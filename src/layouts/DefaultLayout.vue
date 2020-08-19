@@ -1,13 +1,29 @@
 <template>
   <div class="hero soupe-ui-layout-container">
-    <nav class="hero-head navbar soupe-ui-layout-header is-dark">
+    <nav
+      class="hero-head navbar soupe-ui-layout-header is-dark"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
           <img src="@/assets/logo.png" class="logo" alt />
           Soupe UI Components (VueJS)
         </router-link>
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar-menu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div class="navbar-menu">
+
+      <div class="navbar-menu" id="navbar-menu">
         <div class="navbar-start">
           <router-link
             to="/"
@@ -22,24 +38,13 @@
             >{{ $t('soupe.ui.demos.menus.components.title') }}</router-link
           >
         </div>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="control has-icons-left">
-            <div class="select is-primary">
-              <select v-model="lang">
-                <option
-                  v-for="(lang, i) in langs"
-                  :key="`Lang${i}`"
-                  :value="lang"
-                  >{{ lang }}</option
-                >
-              </select>
-            </div>
-            <span class="icon is-left">
-              <i class="fas fa-globe"></i>
-            </span>
-          </div>
+        <div class="navbar-end">
+          <a
+            class="navbar-item is-uppercase"
+            @click="setLang"
+            v-text="lang == 'en' ? 'zh' : '英文'"
+          >
+          </a>
         </div>
       </div>
     </nav>
@@ -65,6 +70,30 @@
         this.lang = this.$cookie.get('lang')
         this.$i18n.locale = this.lang
       }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(
+          document.querySelectorAll('.navbar-burger'),
+          0
+        )
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+          // Add a click event on each of them
+          $navbarBurgers.forEach((el) => {
+            el.addEventListener('click', () => {
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target
+              const $target = document.getElementById(target)
+
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active')
+              $target.classList.toggle('is-active')
+            })
+          })
+        }
+      })
     },
     watch: {
       lang: function(newVal) {
@@ -76,8 +105,23 @@
     },
     methods: {
       setLang() {
-        this.$cookie.set('lang')
+        if (this.lang == 'en') {
+          this.lang = 'zh'
+        } else {
+          this.lang = 'en'
+        }
       }
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .navbar.is-dark .navbar-end > a.navbar-item:hover {
+    background-color: inherit;
+    font-weight: 600;
+  }
+
+  .navbar-burger {
+    height: auto;
+  }
+</style>
