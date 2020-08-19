@@ -13,10 +13,10 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "bulma": "^0.9.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
     "@intlify/vue-i18n-loader": "^1.0.0",
     "@vue/cli-plugin-babel": "^4.5.4",
     "@vue/cli-plugin-eslint": "^4.5.4",
