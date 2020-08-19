@@ -57,8 +57,8 @@
               <colgroup
                 v-if="
                   selectionConfigs &&
-                  selectionConfigs.multipleSelect &&
-                  fixedLeftColumns >= 1
+                    selectionConfigs.multipleSelect &&
+                    fixedLeftColumns >= 1
                 "
               >
                 <col class="checkbox-column" />
@@ -73,9 +73,9 @@
                     :rowspan="rowsInLeftHeader.length"
                     v-if="
                       selectionConfigs &&
-                      selectionConfigs.multipleSelect &&
-                      fixedLeftColumns >= 1 &&
-                      i == 0
+                        selectionConfigs.multipleSelect &&
+                        fixedLeftColumns >= 1 &&
+                        i == 0
                     "
                   >
                     <table-header-cell>
@@ -122,8 +122,8 @@
               <colgroup
                 v-if="
                   selectionConfigs &&
-                  selectionConfigs.multipleSelect &&
-                  fixedLeftColumns < 1
+                    selectionConfigs.multipleSelect &&
+                    fixedLeftColumns < 1
                 "
               >
                 <col class="checkbox-column" />
@@ -137,9 +137,6 @@
                   }"
                 />
               </colgroup>
-              <colgroup v-if="bodyScrollableV">
-                <col style="width: 100px;" />
-              </colgroup>
               <thead>
                 <tr v-for="(rowInHeader, i) in rowsInCenterHeader" :key="i">
                   <th
@@ -147,8 +144,8 @@
                     :rowspan="rowsInCenterHeader.length"
                     v-if="
                       selectionConfigs &&
-                      selectionConfigs.multipleSelect &&
-                      fixedLeftColumns < 1
+                        selectionConfigs.multipleSelect &&
+                        fixedLeftColumns < 1
                     "
                   >
                     <table-header-cell>
@@ -188,9 +185,6 @@
                         columnInHeader.title ? columnInHeader.title : '&nbsp;'
                       }}
                     </table-header-cell>
-                  </th>
-                  <th v-if="bodyScrollableV" style="text-overflow: clip;">
-                    &nbsp;
                   </th>
                 </tr>
               </thead>
@@ -249,8 +243,8 @@
               <colgroup
                 v-if="
                   selectionConfigs &&
-                  selectionConfigs.multipleSelect &&
-                  fixedLeftColumns >= 1
+                    selectionConfigs.multipleSelect &&
+                    fixedLeftColumns >= 1
                 "
               >
                 <col class="checkbox-column" />
@@ -264,8 +258,8 @@
                     class="checkbox-column"
                     v-if="
                       selectionConfigs &&
-                      selectionConfigs.multipleSelect &&
-                      fixedLeftColumns >= 1
+                        selectionConfigs.multipleSelect &&
+                        fixedLeftColumns >= 1
                     "
                   >
                     <input
@@ -323,12 +317,6 @@
                     </template>
                   </template>
                 </tr>
-                <tr v-if="bodyScrollableV">
-                  <td
-                    :colspan="columnsInLeftBody.length"
-                    class="soupe-ui-table-colspan"
-                  ></td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -342,8 +330,8 @@
               <colgroup
                 v-if="
                   selectionConfigs &&
-                  selectionConfigs.multipleSelect &&
-                  fixedLeftColumns < 1
+                    selectionConfigs.multipleSelect &&
+                    fixedLeftColumns < 1
                 "
               >
                 <col class="checkbox-column" />
@@ -363,8 +351,8 @@
                     class="checkbox-column"
                     v-if="
                       selectionConfigs &&
-                      selectionConfigs.multipleSelect &&
-                      fixedLeftColumns < 1
+                        selectionConfigs.multipleSelect &&
+                        fixedLeftColumns < 1
                     "
                   >
                     <input
@@ -496,12 +484,6 @@
                       </td>
                     </template>
                   </template>
-                </tr>
-                <tr v-if="bodyScrollableV">
-                  <td
-                    :colspan="columnsInRightBody.length"
-                    class="soupe-ui-table-colspan"
-                  ></td>
                 </tr>
               </tbody>
             </table>
@@ -766,7 +748,7 @@
           ).scrollTop = this.bodyScrollTop
         }
       },
-      'selectionConfigs.multipleSelect': function () {
+      'selectionConfigs.multipleSelect': function() {
         this.$emit('page-changed', 1, this.size)
       }
     },
@@ -925,7 +907,7 @@
 
       this.$el
         .querySelector('.soupe-ui-table-body-center')
-        .addEventListener('scroll', function (event) {
+        .addEventListener('scroll', function(event) {
           self.bodyScrollLeft = event.target.scrollLeft
           self.bodyScrollTop = event.target.scrollTop
         })
@@ -954,7 +936,7 @@
         '.soupe-ui-table-body-center'
       ).clientWidth
 
-      window.addEventListener('resize', function () {
+      window.addEventListener('resize', function() {
         if (
           self.$el.querySelector('.soupe-ui-table-body-center table')
             .clientWidth >
@@ -1284,10 +1266,8 @@
 
   .soupe-ui-table table th {
     background-color: $light;
-  }
-
-  .soupe-ui-table-header table {
-    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
   }
 
   .soupe-ui-table-header-centralized table th {
@@ -1358,11 +1338,6 @@
 
   .soupe-ui-table-header-no-right-border {
     border-right: none !important;
-  }
-
-  .soupe-ui-table-colspan {
-    text-overflow: clip;
-    background-color: $grey-lighter;
   }
 
   .checkbox-column {
