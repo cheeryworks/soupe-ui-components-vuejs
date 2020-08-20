@@ -16,10 +16,10 @@
               'soupe.ui.components.table.pagination_page_sizes_left_bottom_label'
             )
         "
+        :options="table.pageSizes"
         :right-label="
           $t('soupe.ui.components.table.pagination_page_sizes_right_label')
         "
-        :options="table.pageSizes"
       ></soupe-ui-select>
     </div>
     <div class="field">
@@ -34,26 +34,26 @@
 </template>
 
 <script>
-  export default {
-    name: 'soupe-ui-select-demo',
-    data() {
-      return {
-        options: [
-          {
-            id: 'A1',
-            name: 'A1'
-          },
-          {
-            id: 'A2',
-            name: 'A2'
-          }
-        ],
-        table: {
-          totalPage: 2,
-          page: 1,
-          pageSizes: [20, 50, 100]
+export default {
+  name: 'soupe-ui-select-demo',
+  data() {
+    return {
+      options: [
+        {
+          id: 'A1',
+          name: 'A1'
+        },
+        {
+          id: 'A2',
+          name: 'A2'
         }
+      ],
+      table: {
+        totalPage: 2,
+        page: 1,
+        pageSizes: [20, 50, 100]
       }
     }
   }
+}
 </script>

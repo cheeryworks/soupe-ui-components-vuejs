@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Template from './MessageBox.vue'
 
-const MessageBox = function (config = {}) {
+const MessageBox = function(config = {}) {
   let Tpl = Vue.extend(Template)
 
   let i18n = this.$i18n
@@ -40,28 +40,28 @@ const MessageBox = function (config = {}) {
   return instance
 }
 
-const install = function (Vue) {
+const install = function(Vue) {
   Vue.prototype.$dialog = MessageBox
 
-  Vue.prototype.$confirm = function (config) {
+  Vue.prototype.$confirm = function(config) {
     config.type = 'confirm'
 
     return this.$dialog(config)
   }
 
-  Vue.prototype.$success = function (config) {
+  Vue.prototype.$success = function(config) {
     config.type = 'success'
 
     return this.$dialog(config)
   }
 
-  Vue.prototype.$warning = function (config) {
+  Vue.prototype.$warning = function(config) {
     config.type = 'warning'
 
     return this.$dialog(config)
   }
 
-  Vue.prototype.$error = function (config) {
+  Vue.prototype.$error = function(config) {
     config.type = 'error'
 
     return this.$dialog(config)

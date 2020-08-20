@@ -9,7 +9,7 @@
       <soupe-ui-accordion-item-content>B</soupe-ui-accordion-item-content>
     </soupe-ui-accordion-item>
     <soupe-ui-accordion-item>
-      <soupe-ui-accordion-item-title title="C" alert="20">
+      <soupe-ui-accordion-item-title alert="20" title="C">
       </soupe-ui-accordion-item-title>
       <soupe-ui-accordion-item-content>C</soupe-ui-accordion-item-content>
     </soupe-ui-accordion-item>

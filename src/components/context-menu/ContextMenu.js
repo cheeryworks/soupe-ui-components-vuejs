@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Template from './ContextMenu.vue'
 
-const ContextMenu = function (event, config = {}) {
+const ContextMenu = function(event, config = {}) {
   let Tpl = Vue.extend(Template)
 
   let instance = new Tpl()
@@ -37,7 +37,7 @@ const ContextMenu = function (event, config = {}) {
   return instance
 }
 
-const install = function (Vue) {
+const install = function(Vue) {
   Vue.prototype.$contextMenu = ContextMenu
 }
 

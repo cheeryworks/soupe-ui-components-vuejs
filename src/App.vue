@@ -1,15 +1,15 @@
 <template>
-  <div id="app" class="soupe-ui-app">
+  <div class="soupe-ui-app" id="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'App'
-  }
+export default {
+  name: 'App'
+}
 </script>
 
 <style lang="scss">
-  @import 'styles/app';
+@import 'styles/app';
 </style>

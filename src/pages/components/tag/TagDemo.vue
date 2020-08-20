@@ -20,16 +20,16 @@
       <label class="label">Selected Normal Tags</label>
       <div class="tags">
         <soupe-ui-tag selected>Default</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-black">Black</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-dark">Dark</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-light">Light</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-white">White</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-primary">Primary</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-link">Link</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-info">Info</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-success">Success</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-warning">Warning</soupe-ui-tag>
-        <soupe-ui-tag selected class="is-danger">Danger</soupe-ui-tag>
+        <soupe-ui-tag class="is-black" selected>Black</soupe-ui-tag>
+        <soupe-ui-tag class="is-dark" selected>Dark</soupe-ui-tag>
+        <soupe-ui-tag class="is-light" selected>Light</soupe-ui-tag>
+        <soupe-ui-tag class="is-white" selected>White</soupe-ui-tag>
+        <soupe-ui-tag class="is-primary" selected>Primary</soupe-ui-tag>
+        <soupe-ui-tag class="is-link" selected>Link</soupe-ui-tag>
+        <soupe-ui-tag class="is-info" selected>Info</soupe-ui-tag>
+        <soupe-ui-tag class="is-success" selected>Success</soupe-ui-tag>
+        <soupe-ui-tag class="is-warning" selected>Warning</soupe-ui-tag>
+        <soupe-ui-tag class="is-danger" selected>Danger</soupe-ui-tag>
       </div>
     </div>
     <div class="field">
@@ -73,18 +73,22 @@
         <soupe-ui-tag class="is-rounded is-medium is-light">Light</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-white">White</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-primary"
-          >Primary</soupe-ui-tag
+        >Primary
+        </soupe-ui-tag
         >
         <soupe-ui-tag class="is-rounded is-medium is-link">Link</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-info">Info</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-success"
-          >Success</soupe-ui-tag
+        >Success
+        </soupe-ui-tag
         >
         <soupe-ui-tag class="is-rounded is-medium is-warning"
-          >Warning</soupe-ui-tag
+        >Warning
+        </soupe-ui-tag
         >
         <soupe-ui-tag class="is-rounded is-medium is-danger"
-          >Danger</soupe-ui-tag
+        >Danger
+        </soupe-ui-tag
         >
       </div>
     </div>

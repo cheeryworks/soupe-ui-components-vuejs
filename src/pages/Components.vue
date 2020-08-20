@@ -7,32 +7,32 @@
           <div class="hero-body px-0 py-0">
             <p class="panel-block"></p>
             <router-link
+              :class="{ 'is-active': $route.name === 'components' }"
               :to="{ name: 'components' }"
               class="panel-block"
-              :class="{ 'is-active': $route.name === 'components' }"
             >
               <span class="panel-icon">
-                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                <i aria-hidden="true" class="fas fa-angle-right"></i>
               </span>
               {{
                 $t('soupe.ui.demos.menus.components.menus.introduction.title')
               }}
             </router-link>
             <router-link
-              v-for="demo of demos"
-              :to="{ name: demo.name }"
-              :key="demo.name"
-              class="panel-block"
               :class="{ 'is-active': $route.name === demo.name }"
+              :key="demo.name"
+              :to="{ name: demo.name }"
+              class="panel-block"
+              v-for="demo of demos"
             >
               <span class="panel-icon">
-                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                <i aria-hidden="true" class="fas fa-angle-right"></i>
               </span>
               {{
                 $t(
                   'soupe.ui.demos.menus.components.menus.' +
-                    demo.name +
-                    '.title'
+                  demo.name +
+                  '.title'
                 )
               }}
             </router-link>
@@ -50,70 +50,70 @@
   </default-layout>
 </template>
 <script>
-  import DefaultLayout from '@/layouts/DefaultLayout'
-  import Introduction from '@/pages/components/Introduction'
+import DefaultLayout from '@/layouts/DefaultLayout'
+import Introduction from '@/pages/components/Introduction'
 
-  export default {
-    components: { DefaultLayout, Introduction },
-    data() {
-      return {
-        demos: []
-      }
-    },
-    mounted() {
-      let demosRouteConfig = this.getCurrentRouteConfig(
-        this.$router.options.routes
-      )
+export default {
+  components: {DefaultLayout, Introduction},
+  data() {
+    return {
+      demos: []
+    }
+  },
+  mounted() {
+    let demosRouteConfig = this.getCurrentRouteConfig(
+      this.$router.options.routes
+    )
 
-      for (let demoRouteConfig of demosRouteConfig.children) {
-        let demo = {}
+    for (let demoRouteConfig of demosRouteConfig.children) {
+      let demo = {}
 
-        demo.name = demoRouteConfig.name
+      demo.name = demoRouteConfig.name
 
-        this.demos.push(demo)
-      }
-    },
-    methods: {
-      getCurrentRouteConfig(routeConfigs) {
-        for (let routeConfig of routeConfigs) {
-          if (routeConfig.name === 'components') {
-            return routeConfig
-          }
+      this.demos.push(demo)
+    }
+  },
+  methods: {
+    getCurrentRouteConfig(routeConfigs) {
+      for (let routeConfig of routeConfigs) {
+        if (routeConfig.name === 'components') {
+          return routeConfig
+        }
 
-          if (routeConfig.children) {
-            return this.getCurrentRouteConfig(routeConfig.children)
-          }
+        if (routeConfig.children) {
+          return this.getCurrentRouteConfig(routeConfig.children)
         }
       }
     }
   }
+}
 </script>
 
-<style scoped lang="scss">
-  @import '~bulma/sass/utilities/_all';
+<style lang="scss" scoped>
+@import '~bulma/sass/utilities/_all';
 
-  .soupe-ui-layout-sidebar.hero > .hero-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    flex-shrink: 1;
-  }
+.soupe-ui-layout-sidebar.hero > .hero-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-shrink: 1;
+}
 
-  .soupe-ui-layout-sidebar .panel {
-    background-color: transparent;
-  }
+.soupe-ui-layout-sidebar .panel {
+  background-color: transparent;
+}
 
-  .panel > .hero-body,
-  .panel.hero-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    flex-shrink: 1;
-  }
+.panel > .hero-body,
+.panel.hero-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-shrink: 1;
+}
 
-  .tile {
-    min-height: auto;
-  }
+.tile {
+  min-height: auto;
+}
 
-  .panel-block {
-    color: $dark !important;
-  }
+.panel-block {
+  color: $dark !important;
+}
 </style>

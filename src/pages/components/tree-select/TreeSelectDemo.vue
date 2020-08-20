@@ -3,27 +3,27 @@
 </template>
 
 <script>
-  export default {
-    name: 'soupe-ui-tree-select-demo',
-    data() {
-      return {
-        records: [
-          {
-            id: 'A',
-            name: 'A',
-            children: [
-              {
-                id: 'A1',
-                name: 'A1'
-              },
-              {
-                id: 'A2',
-                name: 'A2'
-              }
-            ]
-          }
-        ]
-      }
+export default {
+  name: 'soupe-ui-tree-select-demo',
+  data() {
+    return {
+      records: [
+        {
+          id: 'A',
+          name: 'A',
+          children: [
+            {
+              id: 'A1',
+              name: 'A1'
+            },
+            {
+              id: 'A2',
+              name: 'A2'
+            }
+          ]
+        }
+      ]
     }
   }
+}
 </script>

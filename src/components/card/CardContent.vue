@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  export default {
-    name: 'soupe-ui-card-content'
-  }
+export default {
+  name: 'soupe-ui-card-content'
+}
 </script>

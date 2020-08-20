@@ -5,13 +5,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'soupe-ui-card'
-  }
+export default {
+  name: 'soupe-ui-card'
+}
 </script>
 
-<style scoped lang="scss">
-  .soupe-ui-card {
-    background-color: transparent !important;
-  }
+<style lang="scss" scoped>
+.soupe-ui-card {
+  background-color: transparent !important;
+}
 </style>

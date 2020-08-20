@@ -1,29 +1,31 @@
 <template>
   <div class="hero soupe-ui-layout-container">
     <nav
+      aria-label="main navigation"
       class="hero-head navbar soupe-ui-layout-header is-dark"
       role="navigation"
-      aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
-          <img src="@/assets/logo.png" class="logo" alt />
+        <router-link class="navbar-item" to="/">
+          <img alt class="logo" src="@/assets/logo.png"/>
           Soupe UI Components (VueJS)
         </router-link>
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
           <router-link
-            to="/"
-            class="navbar-item"
             :class="{ 'is-active': $route.matched[0].name === 'home' }"
-            >{{ $t('soupe.ui.demos.menus.home.title') }}</router-link
+            class="navbar-item"
+            to="/"
+          >{{ $t('soupe.ui.demos.menus.home.title') }}
+          </router-link
           >
           <router-link
-            to="/components"
-            class="navbar-item"
             :class="{ 'is-active': $route.matched[0].name === 'components' }"
-            >{{ $t('soupe.ui.demos.menus.components.title') }}</router-link
+            class="navbar-item"
+            to="/components"
+          >{{ $t('soupe.ui.demos.menus.components.title') }}
+          </router-link
           >
         </div>
         <!-- <div class="navbar-end">
@@ -46,46 +48,46 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        langs: ['en', 'zh'],
-        lang: 'en'
+export default {
+  data() {
+    return {
+      langs: ['en', 'zh'],
+      lang: 'en'
+    }
+  },
+  created() {
+    if (this.$cookie.get('lang')) {
+      this.lang = this.$cookie.get('lang')
+      this.$i18n.locale = this.lang
+    }
+  },
+  watch: {
+    lang: function(newVal) {
+      if (!this.$cookie.get('lang') || newVal != this.$cookie.get('lang')) {
+        this.$cookie.set('lang', newVal, {expires: '1Y'})
+        this.$i18n.locale = newVal
       }
-    },
-    created() {
-      if (this.$cookie.get('lang')) {
-        this.lang = this.$cookie.get('lang')
-        this.$i18n.locale = this.lang
-      }
-    },
-    watch: {
-      lang: function(newVal) {
-        if (!this.$cookie.get('lang') || newVal != this.$cookie.get('lang')) {
-          this.$cookie.set('lang', newVal, { expires: '1Y' })
-          this.$i18n.locale = newVal
-        }
-      }
-    },
-    methods: {
-      setLang() {
-        if (this.lang == 'en') {
-          this.lang = 'zh'
-        } else {
-          this.lang = 'en'
-        }
+    }
+  },
+  methods: {
+    setLang() {
+      if (this.lang == 'en') {
+        this.lang = 'zh'
+      } else {
+        this.lang = 'en'
       }
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .navbar.is-dark .navbar-end > a.navbar-item:hover {
-    background-color: inherit;
-    font-weight: 600;
-  }
+.navbar.is-dark .navbar-end > a.navbar-item:hover {
+  background-color: inherit;
+  font-weight: 600;
+}
 
-  .navbar-burger {
-    height: auto;
-  }
+.navbar-burger {
+  height: auto;
+}
 </style>
