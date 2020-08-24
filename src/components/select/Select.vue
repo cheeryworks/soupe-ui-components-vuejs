@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import $record from '@/utils/RecordUtil'
+import $record from '../../utils/RecordUtil'
 
 export default {
   name: 'soupe-ui-select',
