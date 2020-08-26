@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-wizard-item a {
   font-size: 20px;
   color: $black;

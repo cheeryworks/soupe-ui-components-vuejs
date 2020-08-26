@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Template from './MessageBox.vue'
 
-const MessageBox = function(config = {}) {
+function createMessageBox(config = {}) {
   let Tpl = Vue.extend(Template)
 
   let i18n = this.$i18n
 
   let instance = new Tpl({
-    i18n
+    i18n: i18n
   })
 
   if (typeof config === 'string') {
@@ -41,30 +41,36 @@ const MessageBox = function(config = {}) {
 }
 
 const install = function(Vue) {
-  Vue.prototype.$dialog = MessageBox
+  Vue.prototype.createMessageBox = createMessageBox
+
+  Vue.prototype.$dialog = function(config) {
+    config.type = 'normal'
+
+    return this.createMessageBox(config)
+  }
 
   Vue.prototype.$confirm = function(config) {
     config.type = 'confirm'
 
-    return this.$dialog(config)
+    return this.createMessageBox(config)
   }
 
   Vue.prototype.$success = function(config) {
     config.type = 'success'
 
-    return this.$dialog(config)
+    return this.createMessageBox(config)
   }
 
   Vue.prototype.$warning = function(config) {
     config.type = 'warning'
 
-    return this.$dialog(config)
+    return this.createMessageBox(config)
   }
 
   Vue.prototype.$error = function(config) {
     config.type = 'error'
 
-    return this.$dialog(config)
+    return this.createMessageBox(config)
   }
 }
 

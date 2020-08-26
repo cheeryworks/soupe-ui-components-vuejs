@@ -48,8 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-wizard {
   background-color: $light;
 }

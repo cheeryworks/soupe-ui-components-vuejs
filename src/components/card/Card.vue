@@ -1,5 +1,5 @@
 <template>
-  <div class="soupe-ui-card panel hero">
+  <div class="soupe-ui-card panel hero hero-body px-0 py-0">
     <slot></slot>
   </div>
 </template>

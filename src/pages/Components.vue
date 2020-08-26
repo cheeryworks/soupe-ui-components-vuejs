@@ -1,7 +1,7 @@
 <template>
   <default-layout>
     <div class="tile hero-body px-0 py-0">
-      <div class="tile is-vertical is-3 px-2 py-2 hero soupe-ui-layout-sidebar">
+      <div class="tile is-vertical is-3 pl-2 pr-1 py-2 hero soupe-ui-layout-sidebar">
         <div class="panel is-primary hero-body px-0 py-0 hero">
           <p class="panel-heading hero-head">Components</p>
           <div class="hero-body px-0 py-0">
@@ -14,9 +14,7 @@
               <span class="panel-icon">
                 <i aria-hidden="true" class="fas fa-angle-right"></i>
               </span>
-              {{
-                $t('soupe.ui.demos.menus.components.menus.introduction.title')
-              }}
+              {{ $t('soupe.ui.demos.menus.components.menus.introduction.title') }}
             </router-link>
             <router-link
               :class="{ 'is-active': $route.name === demo.name }"
@@ -28,19 +26,13 @@
               <span class="panel-icon">
                 <i aria-hidden="true" class="fas fa-angle-right"></i>
               </span>
-              {{
-                $t(
-                  'soupe.ui.demos.menus.components.menus.' +
-                  demo.name +
-                  '.title'
-                )
-              }}
+              {{ $t('soupe.ui.demos.menus.components.menus.' + demo.name + '.title') }}
             </router-link>
             <p class="panel-block"></p>
           </div>
         </div>
       </div>
-      <div class="tile is-9 px-2 py-2 soupe-ui-layout-main-content hero">
+      <div class="tile is-9 pl-1 pr-2 py-2 soupe-ui-layout-main-content hero">
         <div class="panel hero-body px-2 py-2 hero">
           <introduction v-if="$route.name === 'components'"></introduction>
           <router-view v-else></router-view>
@@ -90,8 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-layout-sidebar.hero > .hero-body {
   overflow-x: hidden;
   overflow-y: auto;

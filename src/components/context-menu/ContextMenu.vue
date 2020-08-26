@@ -47,8 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-context-menu {
   position: absolute;
   z-index: 1000;

@@ -23,14 +23,7 @@ export default {
   data() {
     return {
       config: {
-        //   title: 'Normal Dialog',
-        content: 'This is a normal dialog',
-        buttons: [
-          {
-            classes: 'button soupe-ui-message-button',
-            text: '完成'
-          }
-        ]
+        content: 'This is a normal dialog'
       }
     }
   },

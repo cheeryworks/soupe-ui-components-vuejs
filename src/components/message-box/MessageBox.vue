@@ -45,14 +45,14 @@
               @click="callMethod()"
               class="button soupe-ui-message-button"
             >
-              {{ $t('global.confirm') }}
+              {{ $t('soupe.ui.components.message_box.buttons.confirm') }}
             </button>
             <button
               @click="closeMessageBox"
               class="button is-info soupe-ui-message-button"
               v-if="cancelButtonVisible"
             >
-              {{ $t('global.cancel') }}
+              {{ $t('soupe.ui.components.message_box.buttons.cancel') }}
             </button>
           </template>
         </div>
@@ -83,15 +83,15 @@ export default {
   computed: {
     defaultTitle() {
       if (this.type === 'confirm') {
-        return this.$t('soupe.ui.components.message.title.confirm')
+        return this.$t('soupe.ui.components.message_box.title.confirm')
       } else if (this.type === 'success') {
-        return this.$t('soupe.ui.components.message.title.success')
+        return this.$t('soupe.ui.components.message_box.title.success')
       } else if (this.type === 'warning') {
-        return this.$t('soupe.ui.components.message.title.warning')
+        return this.$t('soupe.ui.components.message_box.title.warning')
       } else if (this.type === 'error') {
-        return this.$t('soupe.ui.components.message.title.error')
+        return this.$t('soupe.ui.components.message_box.title.error')
       } else {
-        return this.$t('soupe.ui.components.message.title.default')
+        return this.$t('soupe.ui.components.message_box.title.default')
       }
     },
     messageTitleIconClass() {
@@ -186,8 +186,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-message-background {
   position: fixed;
   z-index: 10000;

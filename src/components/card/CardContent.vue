@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-block hero-body px-2 py-2">
+  <div class="hero-body px-0 py-0">
     <slot></slot>
   </div>
 </template>

@@ -401,8 +401,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-date-picker .button {
   width: 100%;
 }

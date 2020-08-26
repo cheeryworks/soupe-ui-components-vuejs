@@ -11,7 +11,7 @@
       class="soupe-ui-table hero"
     >
       <div class="hero-head pagination-top">
-        <div class="columns is-gapless is-vcentered mx-0 my-0">
+        <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2">
           <template v-if="pageSizeInBottom">
             <div class="column">
               <div class="operations has-text-right" v-show="hasOperations">
@@ -1223,7 +1223,7 @@ export default {
     },
     onCheck(event, record) {
       this.$emit(
-        'soupe-ui-table-record-checking',
+        'record-checking',
         event.target.checked,
         record,
         this.records
@@ -1257,8 +1257,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-table.hero-body {
   overflow-x: hidden;
   overflow-y: auto;
@@ -1288,7 +1286,6 @@ export default {
 
 .soupe-ui-table table th {
   background-color: $light;
-  text-align: center;
   vertical-align: middle;
 }
 
@@ -1322,32 +1319,32 @@ export default {
 }
 
 .soupe-ui-table-content {
-  border: 1px solid $grey-light;
+  border: 1px solid $grey-lighter;
   border-radius: $radius;
 }
 
 .soupe-ui-table-fixed .soupe-ui-table-header-left,
 .soupe-ui-table-fixed .soupe-ui-table-header-center,
 .soupe-ui-table-fixed .soupe-ui-table-header-right {
-  border-bottom: 1px solid $grey-light;
+  border-bottom: 1px solid $grey-lighter;
 }
 
 .soupe-ui-table-header-left,
 .soupe-ui-table-body-left,
 .soupe-ui-table-footer-left {
-  border-right: 1px solid $grey-light;
+  border-right: 1px solid $grey-lighter;
 }
 
 .soupe-ui-table-header-right,
 .soupe-ui-table-body-right,
 .soupe-ui-table-footer-right {
-  border-left: 1px solid $grey-light;
+  border-left: 1px solid $grey-lighter;
 }
 
 .soupe-ui-table-footer-left,
 .soupe-ui-table-footer-center,
 .soupe-ui-table-footer-right {
-  border-top: 1px solid $grey-light;
+  border-top: 1px solid $grey-lighter;
 }
 
 .soupe-ui-table-scroll tr:last-child td {
@@ -1377,14 +1374,5 @@ export default {
   padding: 0px !important;
   width: 32px;
   height: 32px;
-}
-
-.pagination-top {
-  padding-top: 0px;
-}
-
-.pagination-top .pagination-bar,
-.pagination-top .operations {
-  padding-bottom: 10px;
 }
 </style>

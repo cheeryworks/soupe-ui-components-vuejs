@@ -154,8 +154,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-tree {
   background-color: $white;
 }

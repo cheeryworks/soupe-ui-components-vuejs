@@ -9,7 +9,9 @@
     >
       <div class="columns is-gapless is-vcentered">
         <div @click="expand" class="column is-narrow soupe-ui-tree-item-arrow">
-          <span :class="arrowClass">&nbsp;&nbsp;&nbsp;</span>
+          <span class="icon">
+            <i class="fas" :class="arrowClass"></i>
+          </span>
         </div>
         <div @click="select(record)" class="column soupe-ui-tree-item-name">
           <div :class="{ 'text-muted': !itemClickable(record) }">
@@ -129,9 +131,9 @@ export default {
     arrowClass() {
       if (this.record.children) {
         if (this.expanded) {
-          return 'arrow-down'
+          return 'fa-caret-down'
         } else {
-          return 'arrow-right'
+          return 'fa-caret-right'
         }
       } else {
         return ''
@@ -167,14 +169,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-tree-item {
   cursor: pointer;
 }
 
 .soupe-ui-tree-item-name > div {
-  padding: 0.375rem 0px;
+  padding: 0.5em 0em;
+}
+
+.soupe-ui-tree-item-current {
+  border-left: 2px solid transparent;
 }
 
 .soupe-ui-tree-item-current:hover {
@@ -194,6 +198,7 @@ export default {
 .soupe-ui-tree-item-arrow {
   width: 30px;
   padding-right: 0px !important;
+  text-align: center;
 }
 
 .soupe-ui-tree-item-arrow .arrow-right {
@@ -203,4 +208,17 @@ export default {
 .soupe-ui-tree-item-controls {
   width: 32px;
 }
+
+.arrow-down {
+  border-color: $grey-dark transparent transparent transparent;
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-right {
+  border-color: transparent transparent transparent $grey;
+  width: 20px;
+  height: 20px;
+}
+
 </style>

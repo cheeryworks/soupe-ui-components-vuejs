@@ -17,7 +17,7 @@
       :itemClickable="optionClickable"
       :records="records"
       :selectedItemValue="currentValue"
-      @select="select"
+      @item-selected="select"
       ref="selectableTree"
     ></soupe-ui-tree>
   </soupe-ui-select>
@@ -184,8 +184,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/_all';
-
 .soupe-ui-tree-select .is-dropdown-submenu li:hover {
   background-color: $white;
 }

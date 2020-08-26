@@ -17,13 +17,17 @@
             "empty": "No Data"
           }
         },
-        "message": {
+        "message_box": {
           "title": {
             "default": "Information",
             "confirm": "Confirm",
             "success": "Success",
             "warning": "Warning",
             "error": "Error"
+          },
+          "buttons": {
+            "confirm": "Yes",
+            "cancel": "Cancel"
           }
         },
         "date_picker": {

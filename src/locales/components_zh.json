@@ -17,13 +17,17 @@
             "empty": "无数据"
           }
         },
-        "message": {
+        "message_box": {
           "title": {
             "default": "信息",
             "confirm": "确认",
             "success": "成功",
             "warning": "警告",
             "error": "错误"
+          },
+          "buttions": {
+            "confirm": "确定",
+            "cancel": "取消"
           }
         },
         "date_picker": {
