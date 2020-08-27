@@ -4,7 +4,7 @@
       <div :style="{ width: width + 'px' }" class="soupe-ui-message-container">
         <div
           class="soupe-ui-message-title" v-if="titleEnabled">
-          <div class="columns px-4 py-4 is-1 is-gapless">
+          <div class="columns px-5 py-4 is-1 is-gapless">
             <div class="column is-narrow icon">
               <i :class="messageTitleIconClass" class="fas"></i>
             </div>
@@ -15,7 +15,7 @@
         </div>
         <div
           :style="{ height: contentHeight ? contentHeight + 'px' : 'auto' }"
-          class="soupe-ui-message-content overflow-y-auto px-4 py-4">
+          class="soupe-ui-message-content overflow-y-auto px-5 py-4">
           <component
             :is="contentTemplate.template"
             ref="content"
@@ -26,7 +26,7 @@
             <p v-html="message" v-if="!!message"></p>
           </slot>
         </div>
-        <div class="soupe-ui-message-buttons buttons is-right px-4 py-4">
+        <div class="soupe-ui-message-buttons buttons is-right px-5 py-4">
           <template v-if="buttons && buttons.length > 0">
             <button
               class="button soupe-ui-message-button"
