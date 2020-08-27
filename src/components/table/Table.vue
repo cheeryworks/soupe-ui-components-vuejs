@@ -1289,7 +1289,8 @@ export default {
   vertical-align: middle;
 }
 
-.soupe-ui-table-header-centralized table th {
+.soupe-ui-table-header-centralized table th,
+.soupe-ui-table-header-centralized table th > div {
   text-align: center;
 }
 
@@ -1366,6 +1367,10 @@ export default {
 
 .checkbox-column {
   width: 40px;
+  text-align: center;
+}
+
+.checkbox-column div {
   text-align: center;
 }
 
