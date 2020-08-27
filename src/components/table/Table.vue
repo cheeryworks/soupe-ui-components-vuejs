@@ -22,17 +22,9 @@
           <template v-else>
             <div class="column">
               <soupe-ui-select
-                :left-label="
-                  $t(
-                    'soupe.ui.components.table.pagination_page_sizes_left_label'
-                  )
-                "
+                :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_label')"
                 :options="pageSizes"
-                :right-label="
-                  $t(
-                    'soupe.ui.components.table.pagination_page_sizes_right_label'
-                  )
-                "
+                :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
                 :value="size"
                 @select="changePageSize"
               />
@@ -559,17 +551,9 @@
             </div>
             <div class="column is-narrow" v-if="pageSizeInBottom">
               <soupe-ui-select
-                :left-label="
-                  $t(
-                    'soupe.ui.components.table.pagination_page_sizes_left_bottom_label'
-                  )
-                "
+                :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_bottom_label')"
                 :options="pageSizes"
-                :right-label="
-                  $t(
-                    'soupe.ui.components.table.pagination_page_sizes_right_label'
-                  )
-                "
+                :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
                 :value="size"
                 @select="changePageSize"
               />

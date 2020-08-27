@@ -11,10 +11,7 @@
           $t('soupe.ui.components.table.pagination_pages', {
             currentPage: table.page,
             totalPage: table.totalPage > 0 ? table.totalPage : 1
-          }) +
-            $t(
-              'soupe.ui.components.table.pagination_page_sizes_left_bottom_label'
-            )
+          }) + $t('soupe.ui.components.table.pagination_page_sizes_left_bottom_label')
         "
         :options="table.pageSizes"
         :right-label="
