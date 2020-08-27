@@ -3,22 +3,19 @@
     <div class="soupe-ui-message-wrapper">
       <div :style="{ width: width + 'px' }" class="soupe-ui-message-container">
         <div
-          class="soupe-ui-message-title pb-4 mb-4 columns is-gapless"
-          v-if="titleEnabled"
-        >
-          <div class="column is-narrow icon">
-            <i :class="messageTitleIconClass" class="fas"></i>
+          class="soupe-ui-message-title" v-if="titleEnabled">
+          <div class="columns px-4 py-4 is-1 is-gapless">
+            <div class="column is-narrow icon">
+              <i :class="messageTitleIconClass" class="fas"></i>
+            </div>
+            <div class="column">
+              <div class="ml-2">{{ title ? title : defaultTitle }}</div>
+              </div>
           </div>
-          <div
-            class="column is-narrow"
-            style="padding: 0px 5px !important;"
-          ></div>
-          <div class="column">{{ title ? title : defaultTitle }}</div>
         </div>
         <div
           :style="{ height: contentHeight ? contentHeight + 'px' : 'auto' }"
-          class="soupe-ui-message-content overflow-y-auto"
-        >
+          class="soupe-ui-message-content overflow-y-auto px-4 py-4">
           <component
             :is="contentTemplate.template"
             ref="content"
@@ -29,9 +26,10 @@
             <p v-html="message" v-if="!!message"></p>
           </slot>
         </div>
-        <div class="soupe-ui-message-buttons has-text-right pt-4">
+        <div class="soupe-ui-message-buttons buttons is-right px-4 py-4">
           <template v-if="buttons && buttons.length > 0">
             <button
+              class="button soupe-ui-message-button"
               :class="button.classes"
               :key="i"
               @click="callMethod(button.callback)"
@@ -43,15 +41,13 @@
           <template v-else>
             <button
               @click="callMethod()"
-              class="button soupe-ui-message-button"
-            >
+              class="button soupe-ui-message-button" :class="defaultButtonClass">
               {{ $t('soupe.ui.components.message_box.buttons.confirm') }}
             </button>
             <button
               @click="closeMessageBox"
               class="button is-info soupe-ui-message-button"
-              v-if="cancelButtonVisible"
-            >
+              v-if="cancelButtonVisible">
               {{ $t('soupe.ui.components.message_box.buttons.cancel') }}
             </button>
           </template>
@@ -105,6 +101,19 @@ export default {
         return 'fa-exclamation-triangle has-text-danger'
       } else {
         return 'fa-info-circle has-text-primary'
+      }
+    },
+    defaultButtonClass() {
+      if (this.type === 'confirm') {
+        return 'is-primary'
+      } else if (this.type === 'success') {
+        return 'is-success'
+      } else if (this.type === 'warning') {
+        return 'is-warning'
+      } else if (this.type === 'error') {
+        return 'is-danger'
+      } else {
+        return 'is-primary'
       }
     },
     cancelButtonVisible() {
@@ -206,31 +215,14 @@ export default {
 .soupe-ui-message-container {
   min-width: 300px;
   margin: auto;
-  padding: 20px;
   border: none;
-  border-radius: 2px;
+  border-radius: $radius;
   background-color: $white;
 }
 
 .soupe-ui-message-title {
-  padding-bottom: 20px;
-  border-bottom: 2px solid $grey;
-}
-
-.soupe-ui-message-title {
+  border-bottom: 2px solid $grey-lightest;
   font-size: 1.5rem;
-}
-
-.soupe-ui-message-title i.info {
-  color: $info;
-}
-
-.soupe-ui-message-title i.warning {
-  color: $warning;
-}
-
-.soupe-ui-message-title i.alert {
-  color: $danger;
 }
 
 .soupe-ui-message-content {
@@ -238,7 +230,6 @@ export default {
 }
 
 .soupe-ui-message-button {
-  margin-left: 10px !important;
-  margin-bottom: 0px !important;
+  min-width: 80px;
 }
 </style>
