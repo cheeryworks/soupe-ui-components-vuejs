@@ -1,6 +1,6 @@
 {
   "name": "@cheeryworks/soupe-ui-components-vuejs",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "Soupe UI Components (VueJs)",
   "author": "Carr Chang <carr.z.chang@outlook.com>",
   "repository": {
@@ -21,7 +21,7 @@
     "@vue/cli-plugin-eslint": "^4.5.4",
     "@vue/cli-plugin-unit-mocha": "^4.5.4",
     "@vue/cli-service": "^4.5.4",
-    "@vue/test-utils": "^1.0.4",
+    "@vue/test-utils": "^1.0.5",
     "babel-eslint": "^10.1.0",
     "chai": "^4.1.2",
     "core-js": "^3.6.5",
