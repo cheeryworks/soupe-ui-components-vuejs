@@ -1,4 +1,7 @@
 @import "settings";
+
+$navbar-breakpoint: 1px;
+
 @import '~@cheeryworks/bulma/bulma.sass';
 
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
