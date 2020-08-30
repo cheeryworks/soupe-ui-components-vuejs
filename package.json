@@ -1,6 +1,6 @@
 {
   "name": "@cheeryworks/soupe-ui-components-vuejs",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Soupe UI Components (VueJs)",
   "author": "Carr Chang <carr.z.chang@outlook.com>",
   "repository": {
@@ -13,8 +13,8 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "@cheeryworks/bulma": "^0.9.0"
+    "@cheeryworks/bulma": "^0.9.1-alpha.1",
+    "@fortawesome/fontawesome-free": "^5.14.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.4",
