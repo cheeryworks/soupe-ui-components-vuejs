@@ -12,6 +12,7 @@
     ref="select"
   >
     <soupe-ui-tree
+      :style="{maxHeight: optionHeight ? optionHeight: 'auto'}"
       :autoSelect="false"
       :expandedLevel="expandedLevel"
       :itemClickable="optionClickable"
