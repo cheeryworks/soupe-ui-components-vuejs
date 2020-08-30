@@ -262,13 +262,10 @@ export default {
   color: $black;
 }
 
-.soupe-ui-select-border {
+.soupe-ui-select-options .dropdown-content {
   border: 1px solid $grey;
   border-radius: $radius;
-}
-
-.soupe-ui-select-border:hover {
-  border: 1px solid $grey-dark;
+  overflow-x: hidden;
 }
 
 .soupe-ui-select-right-label {

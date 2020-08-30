@@ -1269,7 +1269,7 @@ export default {
 }
 
 .soupe-ui-table table th {
-  background-color: $light;
+  background-color: $grey-light;
   vertical-align: middle;
 }
 
@@ -1288,7 +1288,7 @@ export default {
 
 .soupe-ui-table-border table th,
 .soupe-ui-table-border table td {
-  border-color: $grey-lightest;
+  border-color: $grey-lighter;
   border-style: solid;
   border-width: 1px 1px 0 0;
 }
@@ -1304,7 +1304,7 @@ export default {
 }
 
 .soupe-ui-table-content {
-  border: 1px solid $grey-lighter;
+  border: 1px solid $grey;
   border-radius: $radius;
 }
 

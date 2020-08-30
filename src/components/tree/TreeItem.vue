@@ -182,17 +182,18 @@ export default {
 }
 
 .soupe-ui-tree-item-current:hover {
-  border-left-color: $light;
-  background-color: $light;
+  border-left-color: $grey;
+  background-color: $grey;
 }
 
 .soupe-ui-tree-item-current.active {
+  background-color: $grey-lightest;
   border-left: 2px solid $primary;
   color: $primary;
 }
 
 .soupe-ui-tree-item-current.active:hover {
-  background-color: $light;
+  background-color: $grey;
 }
 
 .soupe-ui-tree-item-arrow {
