@@ -12,7 +12,7 @@
     >
       <div class="hero-head pagination-top">
         <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2" v-if="!pageSizeInBottom || hasOperations">
-          <div class="column" v-if="!pageSizeInBottom">
+          <div class="column is-narrow" v-if="!pageSizeInBottom">
             <soupe-ui-select
               :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_label')"
               :options="pageSizes"
@@ -21,7 +21,7 @@
               @select="changePageSize"
             />
           </div>
-          <div class="column" v-if="hasOperations" :class="{'is-narrow': !pageSizeInBottom}">
+          <div class="column" v-if="hasOperations">
             <div class="operations has-text-right">
               <slot name="operations"></slot>
             </div>
