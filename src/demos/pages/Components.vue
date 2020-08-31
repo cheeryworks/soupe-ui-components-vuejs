@@ -42,8 +42,8 @@
   </default-layout>
 </template>
 <script>
-import DefaultLayout from '@/layouts/DefaultLayout'
-import Introduction from '@/pages/components/Introduction'
+import DefaultLayout from '@/demos/layouts/DefaultLayout'
+import Introduction from '@/demos/pages/components/Introduction'
 
 export default {
   components: {DefaultLayout, Introduction},

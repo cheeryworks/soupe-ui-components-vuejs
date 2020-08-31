@@ -1,15 +1,20 @@
 module.exports = {
   publicPath: '',
   outputDir: 'docs',
+  pages: {
+    index: {
+      entry: 'src/demos/main.js'
+    }
+  },
   css: {
     loaderOptions: {
       scss: {
-        additionalData: `@import "~@/styles/settings.scss";`
+        additionalData: `@import "~@/demos/styles/settings.scss";`
       }
     }
   },
   chainWebpack: (config) => {
-    config.plugin('html').tap((args) => {
+    config.plugin('html-index').tap((args) => {
       args[0].title = 'Soupe UI Components (VueJS)'
       return args
     })

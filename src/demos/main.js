@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueCookie from 'vue-cookie'
 
-import Components from './components'
+import Components from '../components'
 
 import router from './router'
 import i18n from './i18n'

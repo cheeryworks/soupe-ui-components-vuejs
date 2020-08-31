@@ -11,30 +11,21 @@
       class="soupe-ui-table hero"
     >
       <div class="hero-head pagination-top">
-        <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2">
-          <template v-if="pageSizeInBottom">
-            <div class="column">
-              <div class="operations has-text-right" v-show="hasOperations">
-                <slot name="operations"></slot>
-              </div>
+        <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2" v-if="!pageSizeInBottom || hasOperations">
+          <div class="column" v-if="!pageSizeInBottom">
+            <soupe-ui-select
+              :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_label')"
+              :options="pageSizes"
+              :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
+              :value="size"
+              @select="changePageSize"
+            />
+          </div>
+          <div class="column" v-if="hasOperations" :class="{'is-narrow': !pageSizeInBottom}">
+            <div class="operations has-text-right">
+              <slot name="operations"></slot>
             </div>
-          </template>
-          <template v-else>
-            <div class="column">
-              <soupe-ui-select
-                :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_label')"
-                :options="pageSizes"
-                :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
-                :value="size"
-                @select="changePageSize"
-              />
-            </div>
-            <div class="column is-narrow">
-              <div class="operations has-text-right" v-show="hasOperations">
-                <slot name="operations"></slot>
-              </div>
-            </div>
-          </template>
+          </div>
         </div>
       </div>
       <div class="hero-body px-0 py-0 soupe-ui-table-content hero">

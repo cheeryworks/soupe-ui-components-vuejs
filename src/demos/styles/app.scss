@@ -1,6 +1,14 @@
 @import "settings";
 
+$body-size: 14px;
+$body-font-size: 14px;
 $navbar-breakpoint: 1px;
+$hero-body-padding: 0px;
+$tabs-border-bottom-width: 2px;
+$table-striped-row-even-background-color: $grey-lightest;
+$table-striped-row-even-hover-background-color: $grey;
+$panel-shadow: 0 0.3em 0.3em 0em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.1);
+$input-shadow: 0;
 
 @import '~@cheeryworks/bulma/bulma.sass';
 

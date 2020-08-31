@@ -6,7 +6,7 @@
 
 </scripts>
 <script>
-import DefaultLayout from '@/layouts/DefaultLayout'
+import DefaultLayout from '@/demos/layouts/DefaultLayout'
 
 export default {
   components: {DefaultLayout}

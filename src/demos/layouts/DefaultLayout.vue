@@ -7,7 +7,7 @@
     >
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">
-          <img alt class="logo" src="@/assets/logo.png"/>
+          <img alt class="logo" src="@/demos/assets/logo.png"/>
           Soupe UI Components (VueJS)
         </router-link>
       </div>

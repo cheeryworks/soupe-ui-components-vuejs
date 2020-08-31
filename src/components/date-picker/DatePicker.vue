@@ -94,15 +94,17 @@
         >
           <div
             :class="{
-              'has-text-grey-light': !dayOfWeek.currentMonth,
-              'has-background-primary': isSelected('date', dayOfWeek)
+              'has-text-grey-light': !dayOfWeek.currentMonth
             }"
             :key="dayOfWeekIndex"
             @click="selectDate(dayOfWeek)"
             class="column has-text-centered mx-1"
             v-for="(dayOfWeek, dayOfWeekIndex) in daysOfWeek"
           >
-            {{ dayOfWeek.value }}
+            <span class="px-2 py-1"
+              :class="{'has-background-primary': isSelected('date', dayOfWeek)}">
+              {{ dayOfWeek.value }}
+            </span>
           </div>
         </div>
       </div>
