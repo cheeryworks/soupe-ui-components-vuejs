@@ -243,7 +243,7 @@ export default {
       value = `${ this.tmpYear }-${ ('0' + (this.month + 1)).slice(-2) }-${ (
         '0' + this.date
       ).slice(-2) }`
-      this.$emit('value-changed', value)
+      this.$emit('input', value)
 
       this.currentValue = value
 
@@ -282,6 +282,10 @@ export default {
       this.$emit('value-unset', '')
     },
     formatDate(date) {
+      if (date === null) {
+        return null
+      }
+
       if (typeof date === 'string') {
         return date
       }
@@ -395,7 +399,7 @@ export default {
       this.maxDate = Number(maxArr[2])
 
       if (!this.value) {
-        this.$emit('value-changed', '')
+        this.$emit('input', '')
       }
     })
   }

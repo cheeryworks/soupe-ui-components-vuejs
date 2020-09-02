@@ -171,7 +171,7 @@ export default {
         this.currentValue = $record.getRecordValue(option, this.valueProperty)
         this.name = $record.getRecordDisplayName(option, this.displayProperty)
 
-        this.$emit('value-changed', this.currentValue)
+        this.$emit('input', this.currentValue)
 
         this.$emit('item-selected', option)
 

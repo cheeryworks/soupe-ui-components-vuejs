@@ -204,7 +204,7 @@ export default {
         this.name = $record.getRecordDisplayName(option, this.displayProperty)
 
         if (!this.readonly) {
-          this.$emit('value-changed', this.currentValue)
+          this.$emit('input', this.currentValue)
 
           this.$emit('item-selected', option, isClick)
 
