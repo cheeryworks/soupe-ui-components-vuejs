@@ -1,8 +1,6 @@
 <template>
-  <div class="soupe-ui-accordion hero">
-    <div class="hero-body px-0 py-0">
-      <slot></slot>
-    </div>
+  <div class="soupe-ui-accordion">
+    <slot></slot>
   </div>
 </template>
 
@@ -26,3 +24,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.soupe-ui-accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $grey;
+}
+</style>

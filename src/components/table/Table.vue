@@ -11,8 +11,9 @@
       class="soupe-ui-table hero"
     >
       <div class="hero-head pagination-top">
-        <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2" v-if="!pageSizeInBottom || hasOperations">
-          <div class="column is-narrow" v-if="!pageSizeInBottom">
+        <div class="columns is-gapless is-vcentered mx-0 my-0 mb-2"
+          v-if="(paging && !pageSizeInBottom) || hasOperations">
+          <div class="column is-narrow" v-if="paging && !pageSizeInBottom">
             <soupe-ui-select
               :left-label="$t('soupe.ui.components.table.pagination_page_sizes_left_label')"
               :options="pageSizes"
@@ -495,18 +496,18 @@
           </div>
         </div>
         <div
-          class="hero-foot soupe-ui-table-footer grid-x"
+          class="hero-foot soupe-ui-table-footer columns is-gapless"
           v-if="footer && footer.length > 0"
         >
           <div
-            class="cell shrink soupe-ui-table-footer-left"
+            class="column is-narrow soupe-ui-table-footer-left"
             v-if="hasLeftFixedColumns"
           >
             LF
           </div>
-          <div class="cell auto soupe-ui-table-footer-center">CF</div>
+          <div class="column soupe-ui-table-footer-center">CF</div>
           <div
-            class="cell shrink soupe-ui-table-footer-right"
+            class="column is-narrow soupe-ui-table-footer-right"
             v-if="hasRightFixedColumns"
           >
             RF

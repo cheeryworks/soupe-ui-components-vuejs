@@ -53,6 +53,10 @@
           "move-up": "上移",
           "move-down": "下移",
           "delete": "删除"
+        },
+        "company": {
+          "name": "北京颉睿悦氪科技有限公司",
+          "short_name": "CheeryWorks（颉睿悦氪）"
         }
       }
     }

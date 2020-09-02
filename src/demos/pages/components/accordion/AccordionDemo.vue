@@ -1,5 +1,5 @@
 <template>
-  <soupe-ui-accordion class="hero-body px-0 py-0">
+  <soupe-ui-accordion class="hero-body">
     <soupe-ui-accordion-item>
       <soupe-ui-accordion-item-title>A</soupe-ui-accordion-item-title>
       <soupe-ui-accordion-item-content>A</soupe-ui-accordion-item-content>

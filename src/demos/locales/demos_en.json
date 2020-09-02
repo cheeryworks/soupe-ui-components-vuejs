@@ -53,6 +53,10 @@
           "move-up": "Move Up",
           "move-down": "Move Down",
           "delete": "Delete"
+        },
+        "company": {
+          "name": "Beijing CheeryWorks Technology Co., Ltd.",
+          "short_name": "CheeryWorks"
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div
     :style="{ height: height }"
-    class="soupe-ui-accordion-item-content px-2 py-2"
+    class="hero-body soupe-ui-accordion-item-content"
     v-show="active"
   >
     <slot></slot>
@@ -37,21 +37,21 @@ export default {
       this.setHeight()
     },
     setHeight() {
-      let heightOfInactiveItems = 0
-
-      for (let child of this.$parent.$parent.$children) {
-        heightOfInactiveItems += child.$children[0].$el.clientHeight
-      }
-
-      if (this.active) {
-        let height =
-          this.$parent.$parent.$el.clientHeight -
-          heightOfInactiveItems -
-          this.$parent.$parent.$children.length
-        this.height = height + 'px'
-      } else {
-        this.height = '0px'
-      }
+      // let heightOfInactiveItems = 0
+      //
+      // for (let child of this.$parent.$parent.$children) {
+      //   heightOfInactiveItems += child.$children[0].$el.clientHeight
+      // }
+      //
+      // if (this.active) {
+      //   let height =
+      //     this.$parent.$parent.$el.clientHeight -
+      //     heightOfInactiveItems -
+      //     1
+      //   this.height = height + 'px'
+      // } else {
+      //   this.height = '0px'
+      // }
     }
   }
 }
@@ -59,11 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .soupe-ui-accordion-item-content {
-  border-left: 1px solid #ededed;
-  border-right: 1px solid #ededed;
-}
-
-.soupe-ui-accordion-item-content:last-child {
-  border-bottom: 1px solid #ededed;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 </style>

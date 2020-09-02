@@ -1,5 +1,5 @@
 <template>
-  <div class="soupe-ui-accordion-item-title has-background-light px-3 py-3">
+  <div class="hero-head soupe-ui-accordion-item-title px-3 py-3" :class="{'is-active': active}">
     <div class="columns" v-if="title">
       <div class="column" v-html="title"></div>
       <div class="column is-narrow">
@@ -29,6 +29,16 @@ export default {
         return null
       }
     }
+  },
+  data() {
+    return {
+      active: false
+    }
+  },
+  watch: {
+    '$parent.currentActive': function(active) {
+      this.active = active
+    }
   }
 }
 </script>
@@ -36,17 +46,11 @@ export default {
 <style lang="scss" scoped>
 .soupe-ui-accordion-item-title {
   cursor: pointer;
+  background-color: $grey-light;
 }
 
-.soupe-ui-accordion-item-title:not(:last-child) {
-  border-bottom: 1px solid #ededed;
-}
-
-.soupe-ui-accordion-item-title .badge {
-  min-width: 14px;
-  height: 14px;
-  padding: 1px 2px;
-  border-radius: 7px;
-  font-weight: bold;
+.soupe-ui-accordion-item-title.is-active {
+  border-bottom: 1px solid $grey;
+  font-weight: 600;
 }
 </style>
