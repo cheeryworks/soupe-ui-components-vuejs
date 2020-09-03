@@ -1,6 +1,6 @@
 {
   "name": "@cheeryworks/soupe-ui-components-vuejs",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "description": "Soupe UI Components (VueJs)",
   "author": "Carr Chang <carr.z.chang@outlook.com>",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "@vue/test-utils": "^1.0.5",
     "babel-eslint": "^10.1.0",
     "chai": "^4.1.2",
+    "copy-webpack-plugin": "^6.1.0",
     "core-js": "^3.6.5",
     "eslint": "^7.8.1",
     "eslint-plugin-vue": "^6.2.2",
