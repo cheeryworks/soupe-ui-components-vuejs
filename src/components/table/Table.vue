@@ -19,7 +19,7 @@
               :options="pageSizes"
               :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
               :value="size"
-              @select="changePageSize"
+              @item-selected="changePageSize"
             />
           </div>
           <div class="column" v-if="hasOperations">
@@ -547,7 +547,7 @@
                 :options="pageSizes"
                 :right-label="$t('soupe.ui.components.table.pagination_page_sizes_right_label')"
                 :value="size"
-                @select="changePageSize"
+                @item-selected="changePageSize"
               />
             </div>
             <div class="column is-narrow">
