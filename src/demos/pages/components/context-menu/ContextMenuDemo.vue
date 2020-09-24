@@ -61,24 +61,28 @@ export default {
           {
             title: this.$t('soupe.ui.demos.context_menu.add-child'),
             action: function() {
+              // eslint-disable-next-line
               console.log('Add child on [' + record + ']')
             }
           },
           {
             title: this.$t('soupe.ui.demos.context_menu.move-up'),
             action: function() {
+              // eslint-disable-next-line
               console.log('Move up on [' + record + ']')
             }
           },
           {
             title: this.$t('soupe.ui.demos.context_menu.move-down'),
             action: function() {
+              // eslint-disable-next-line
               console.log('Move down on [' + record + ']')
             }
           },
           {
             title: this.$t('soupe.ui.demos.context_menu.delete'),
             action: function() {
+              // eslint-disable-next-line
               console.log('Delete on [' + record + ']')
             }
           }
