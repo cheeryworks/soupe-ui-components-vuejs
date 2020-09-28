@@ -15,7 +15,6 @@ export default {
 .soupe-ui-card-header {
   min-height: 60px;
   max-height: 60px;
-  font-size: inherit;
   align-items: center;
   display: flex;
   flex-shrink: 1;
