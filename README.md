@@ -1,4 +1,4 @@
-# Soupe UI Components (VueJS)
+# Soupe UI Components (Vue.js)
 
 ## Project setup
 ```
