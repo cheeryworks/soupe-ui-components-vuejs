@@ -42,7 +42,7 @@
       <slot></slot>
     </div>
     <div class="hero-foot px-1 py-1 soupe-ui-layout-footer">
-      ©2020 {{ $t('soupe.ui.demos.company.name') }}
+      ©{{ year }} {{ $t('soupe.ui.demos.company.name') }}
     </div>
   </div>
 </template>
@@ -52,7 +52,8 @@ export default {
   data() {
     return {
       langs: ['en', 'zh'],
-      lang: 'en'
+      lang: 'en',
+      year: new Date().getFullYear()
     }
   },
   created() {
