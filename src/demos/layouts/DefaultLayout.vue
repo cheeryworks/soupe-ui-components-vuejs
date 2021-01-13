@@ -2,7 +2,7 @@
   <div class="hero soupe-ui-layout-container">
     <nav
       aria-label="main navigation"
-      class="hero-head navbar soupe-ui-layout-header is-success"
+      class="hero-head navbar soupe-ui-layout-header is-dark"
       role="navigation"
     >
       <div class="navbar-brand">
