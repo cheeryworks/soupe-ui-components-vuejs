@@ -8,7 +8,7 @@
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">
           <img alt class="logo" src="@/demos/assets/logo.png"/>
-          Soupe UI Components (VueJS)
+          Soupe UI Components (Vue.js)
         </router-link>
       </div>
       <div class="navbar-menu">

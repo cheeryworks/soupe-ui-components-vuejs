@@ -15,7 +15,7 @@ module.exports = {
   },
   chainWebpack: (config) => {
     config.plugin('html-index').tap((args) => {
-      args[0].title = 'Soupe UI Components (VueJS)'
+      args[0].title = 'Soupe UI Components (Vue.js)'
       return args
     })
   },
