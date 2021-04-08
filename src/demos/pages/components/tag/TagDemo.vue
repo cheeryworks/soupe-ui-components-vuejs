@@ -72,24 +72,12 @@
         <soupe-ui-tag class="is-rounded is-medium is-dark">Dark</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-light">Light</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-white">White</soupe-ui-tag>
-        <soupe-ui-tag class="is-rounded is-medium is-primary"
-        >Primary
-        </soupe-ui-tag
-        >
+        <soupe-ui-tag class="is-rounded is-medium is-primary">Primary</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-link">Link</soupe-ui-tag>
         <soupe-ui-tag class="is-rounded is-medium is-info">Info</soupe-ui-tag>
-        <soupe-ui-tag class="is-rounded is-medium is-success"
-        >Success
-        </soupe-ui-tag
-        >
-        <soupe-ui-tag class="is-rounded is-medium is-warning"
-        >Warning
-        </soupe-ui-tag
-        >
-        <soupe-ui-tag class="is-rounded is-medium is-danger"
-        >Danger
-        </soupe-ui-tag
-        >
+        <soupe-ui-tag class="is-rounded is-medium is-success">Success</soupe-ui-tag>
+        <soupe-ui-tag class="is-rounded is-medium is-warning">Warning</soupe-ui-tag>
+        <soupe-ui-tag class="is-rounded is-medium is-danger">Danger</soupe-ui-tag>
       </div>
     </div>
   </div>
