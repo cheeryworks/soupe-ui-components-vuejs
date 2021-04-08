@@ -24,11 +24,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-accordion {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid $grey;
-}
-</style>

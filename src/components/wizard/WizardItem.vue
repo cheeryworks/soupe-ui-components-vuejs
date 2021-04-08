@@ -57,15 +57,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-wizard-item a {
-  font-size: 20px;
-  color: $black;
-  text-align: center;
-}
-
-.soupe-ui-wizard-item a.active {
-  color: $primary;
-}
-</style>

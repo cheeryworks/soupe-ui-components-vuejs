@@ -9,9 +9,3 @@ export default {
   name: 'soupe-ui-card'
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-card {
-  background-color: transparent !important;
-}
-</style>

@@ -49,15 +49,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-accordion-item-title {
-  cursor: pointer;
-  background-color: $grey-light;
-}
-
-.soupe-ui-accordion-item-title.is-active {
-  border-bottom: 1px solid $grey;
-  font-weight: 600;
-}
-</style>

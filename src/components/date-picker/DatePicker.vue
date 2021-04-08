@@ -405,23 +405,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-date-picker .button {
-  width: 100%;
-}
-
-.soupe-ui-date-picker > .panel {
-  margin-top: 5px;
-}
-
-.soupe-ui-date-picker .has-background-primary {
-  border-radius: $radius;
-  font-weight: 600;
-  color: $white;
-}
-
-.soupe-ui-date-picker .has-text-centered {
-  cursor: pointer;
-}
-</style>

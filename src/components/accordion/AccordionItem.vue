@@ -43,13 +43,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-accordion-item.is-active {
-  flex: 1;
-}
-
-.soupe-ui-accordion-item:not(:last-child) {
-  border-bottom: 1px solid $grey;
-}
-</style>

@@ -183,14 +183,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-tree-select .is-dropdown-submenu li:hover {
-  background-color: $white;
-}
-
-.soupe-ui-tree-select-content {
-  overflow: auto;
-  min-height: 80px;
-}
-</style>

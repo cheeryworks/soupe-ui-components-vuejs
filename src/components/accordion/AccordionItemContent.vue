@@ -56,10 +56,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-accordion-item-content {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-</style>

@@ -1,9 +1,9 @@
 <template>
-  <div class="soupe-ui-message-background" v-show="visible">
-    <div class="soupe-ui-message-wrapper">
-      <div :style="{ width: width + 'px' }" class="soupe-ui-message-container">
+  <div class="soupe-ui-message-box-background" v-show="visible">
+    <div class="soupe-ui-message-box-wrapper">
+      <div :style="{ width: width + 'px' }" class="soupe-ui-message-box-container">
         <div
-          class="soupe-ui-message-title" v-if="titleEnabled">
+          class="soupe-ui-message-box-title" v-if="titleEnabled">
           <div class="columns px-5 py-4 is-1 is-gapless">
             <div class="column is-narrow icon">
               <i :class="messageTitleIconClass" class="fas"></i>
@@ -15,7 +15,7 @@
         </div>
         <div
           :style="{ height: contentHeight ? contentHeight + 'px' : 'auto' }"
-          class="soupe-ui-message-content overflow-y-auto px-5 py-4">
+          class="soupe-ui-message-box-content overflow-y-auto px-5 py-4">
           <component
             :is="contentTemplate.template"
             ref="content"
@@ -26,10 +26,10 @@
             <p v-html="message" v-if="!!message"></p>
           </slot>
         </div>
-        <div class="soupe-ui-message-buttons buttons is-right px-5 py-4">
+        <div class="soupe-ui-message-box-buttons buttons is-right px-5 py-4">
           <template v-if="buttons && buttons.length > 0">
             <button
-              class="button soupe-ui-message-button"
+              class="button soupe-ui-message-box-button"
               :class="button.classes"
               :key="i"
               @click="callMethod(button.callback)"
@@ -41,12 +41,12 @@
           <template v-else>
             <button
               @click="callMethod()"
-              class="button soupe-ui-message-button" :class="defaultButtonClass">
+              class="button soupe-ui-message-box-button" :class="defaultButtonClass">
               {{ $t('soupe.ui.components.message_box.buttons.confirm') }}
             </button>
             <button
               @click="closeMessageBox"
-              class="button is-info soupe-ui-message-button"
+              class="button is-info soupe-ui-message-box-button"
               v-if="cancelButtonVisible">
               {{ $t('soupe.ui.components.message_box.buttons.cancel') }}
             </button>
@@ -125,7 +125,7 @@ export default {
     }
   },
   mounted() {
-    let messageBox = document.querySelector('.soupe-ui-message-background')
+    let messageBox = document.querySelector('.soupe-ui-message-box-background')
 
     if (messageBox) {
       messageBox.remove()
@@ -150,7 +150,7 @@ export default {
         let contentHeight = this.height - 104
 
         let messageBoxHeight = this.$el.querySelector(
-          '.soupe-ui-message-container'
+          '.soupe-ui-message-box-container'
         ).clientHeight
 
         if (windowHeight < messageBoxHeight + 60) {
@@ -160,7 +160,7 @@ export default {
         this.contentHeight = contentHeight
       } else {
         let messageBoxHeight = this.$el.querySelector(
-          '.soupe-ui-message-container'
+          '.soupe-ui-message-box-container'
         ).clientHeight
 
         if (windowHeight < messageBoxHeight + 60) {
@@ -193,43 +193,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-message-background {
-  position: fixed;
-  z-index: 10000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
-}
-
-.soupe-ui-message-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.soupe-ui-message-container {
-  min-width: 300px;
-  margin: auto;
-  border: none;
-  border-radius: $radius;
-  background-color: $white;
-}
-
-.soupe-ui-message-title {
-  border-bottom: 2px solid $grey-lightest;
-  font-size: 1.5rem;
-}
-
-.soupe-ui-message-content {
-  height: auto;
-}
-
-.soupe-ui-message-button {
-  min-width: 80px;
-}
-</style>

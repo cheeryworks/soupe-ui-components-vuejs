@@ -11,5 +11,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'styles/app';
+@import 'src/demos/styles/app';
 </style>

@@ -46,9 +46,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-wizard {
-  background-color: $light;
-}
-</style>

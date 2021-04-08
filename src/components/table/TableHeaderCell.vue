@@ -1,6 +1,6 @@
 <template>
-  <div style="display: table; height: 100%; width: 100%;">
-    <div style="display: table-cell; vertical-align: middle;">
+  <div class="soupe-ui-table-header-cell">
+    <div class="soupe-ui-table-header-cell-content">
       <slot></slot>
     </div>
   </div>

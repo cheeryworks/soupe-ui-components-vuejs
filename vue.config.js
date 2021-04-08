@@ -9,7 +9,7 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        additionalData: `@import "~@/demos/styles/settings.scss";`
+        additionalData: `@import "~@cheeryworks/soupe-ui-components-styles/settings";`
       }
     }
   },

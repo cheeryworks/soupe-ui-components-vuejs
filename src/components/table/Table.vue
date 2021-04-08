@@ -45,7 +45,7 @@
                     fixedLeftColumns >= 1
                 "
               >
-                <col class="checkbox-column"/>
+                <col class="soupe-ui-table-checkbox-column"/>
               </colgroup>
               <colgroup :key="i" v-for="(column, i) in columnsInLeftBody">
                 <col :style="{ width: column.width + 'px' }"/>
@@ -54,7 +54,7 @@
               <tr :key="i" v-for="(rowInHeader, i) in rowsInLeftHeader">
                 <th
                   :rowspan="rowsInLeftHeader.length"
-                  class="checkbox-column"
+                  class="soupe-ui-table-checkbox-column"
                   v-if="
                       selectionConfigs &&
                         selectionConfigs.multipleSelect &&
@@ -110,7 +110,7 @@
                     fixedLeftColumns < 1
                 "
               >
-                <col class="checkbox-column"/>
+                <col class="soupe-ui-table-checkbox-column"/>
               </colgroup>
               <colgroup :key="i" v-for="(column, i) in columnsInCenterBody">
                 <col
@@ -128,7 +128,7 @@
               <tr :key="i" v-for="(rowInHeader, i) in rowsInCenterHeader">
                 <th
                   :rowspan="rowsInCenterHeader.length"
-                  class="checkbox-column"
+                  class="soupe-ui-table-checkbox-column"
                   v-if="
                       selectionConfigs &&
                         selectionConfigs.multipleSelect &&
@@ -237,7 +237,7 @@
                     fixedLeftColumns >= 1
                 "
               >
-                <col class="checkbox-column"/>
+                <col class="soupe-ui-table-checkbox-column"/>
               </colgroup>
               <colgroup :key="i" v-for="(column, i) in columnsInLeftBody">
                 <col :style="{ width: column.width + 'px' }"/>
@@ -245,7 +245,7 @@
               <tbody>
               <tr :key="i" v-for="(record, i) in records">
                 <td
-                  class="checkbox-column"
+                  class="soupe-ui-table-checkbox-column"
                   v-if="
                       selectionConfigs &&
                         selectionConfigs.multipleSelect &&
@@ -334,7 +334,7 @@
                     fixedLeftColumns < 1
                 "
               >
-                <col class="checkbox-column"/>
+                <col class="soupe-ui-table-checkbox-column"/>
               </colgroup>
               <colgroup :key="i" v-for="(column, i) in columnsInCenterBody">
                 <col
@@ -348,7 +348,7 @@
               <tbody>
               <tr :key="i" v-for="(record, i) in records">
                 <td
-                  class="checkbox-column"
+                  class="soupe-ui-table-checkbox-column"
                   v-if="
                       selectionConfigs &&
                         selectionConfigs.multipleSelect &&
@@ -554,7 +554,7 @@
               <button
                 :class="{ disabled: page === 1 }"
                 @click="prevPage()"
-                class="button hollow pagination-button is-primary"
+                class="button hollow soupe-ui-table-pagination-button is-primary"
               >
                 <span class="icon">
                   <i class="fas fa-caret-left"></i>
@@ -565,7 +565,7 @@
               <button
                 :class="{ disabled: page === totalPage || totalPage === 0 }"
                 @click="nextPage()"
-                class="button hollow pagination-button is-primary"
+                class="button hollow soupe-ui-table-pagination-button is-primary"
               >
                 <span class="icon">
                   <i class="fas fa-caret-right"></i>
@@ -1231,129 +1231,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-table.hero-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  flex-shrink: 1;
-}
-
-.soupe-ui-table .hero-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  flex-shrink: 1;
-}
-
-.soupe-ui-table-body.hero-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  flex-shrink: 1;
-}
-
-.soupe-ui-table table {
-  display: table;
-  table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0px;
-  width: 0;
-  border: none !important;
-}
-
-.soupe-ui-table table th {
-  background-color: $grey-light;
-  vertical-align: middle;
-}
-
-.soupe-ui-table-header-centralized table th,
-.soupe-ui-table-header-centralized table th > div {
-  text-align: center;
-}
-
-.soupe-ui-table table th,
-.soupe-ui-table table td {
-  overflow: hidden;
-  display: table-cell;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.soupe-ui-table-border table th,
-.soupe-ui-table-border table td {
-  border-color: $grey-lighter;
-  border-style: solid;
-  border-width: 1px 1px 0 0;
-}
-
-.soupe-ui-table table tr:first-child th,
-.soupe-ui-table table tr:first-child td {
-  border-top: none;
-}
-
-.soupe-ui-table table tr th:first-child,
-.soupe-ui-table table tr td:first-child {
-  border-left: none;
-}
-
-.soupe-ui-table-content {
-  border: 1px solid $grey;
-  border-radius: $radius;
-}
-
-.soupe-ui-table-fixed .soupe-ui-table-header-left,
-.soupe-ui-table-fixed .soupe-ui-table-header-center,
-.soupe-ui-table-fixed .soupe-ui-table-header-right {
-  border-bottom: 1px solid $grey-lighter;
-}
-
-.soupe-ui-table-header-left,
-.soupe-ui-table-body-left,
-.soupe-ui-table-footer-left {
-  border-right: 1px solid $grey-lighter;
-}
-
-.soupe-ui-table-header-right,
-.soupe-ui-table-body-right,
-.soupe-ui-table-footer-right {
-  border-left: 1px solid $grey-lighter;
-}
-
-.soupe-ui-table-footer-left,
-.soupe-ui-table-footer-center,
-.soupe-ui-table-footer-right {
-  border-top: 1px solid $grey-lighter;
-}
-
-.soupe-ui-table-scroll tr:last-child td {
-  border-bottom-width: 1px !important;
-}
-
-.soupe-ui-table-no-right-border {
-  border-right: none !important;
-}
-
-.soupe-ui-table-header-no-right-border {
-  border-right: none !important;
-}
-
-.soupe-ui-table-colspan {
-  text-overflow: clip;
-  background-color: transparent;
-}
-
-.checkbox-column {
-  width: 40px;
-  text-align: center;
-}
-
-.checkbox-column div {
-  text-align: center;
-}
-
-.pagination-button {
-  margin-left: 5px;
-  padding: 0px !important;
-  width: 32px;
-  height: 32px;
-}
-</style>

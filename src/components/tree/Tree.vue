@@ -152,9 +152,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.soupe-ui-tree {
-  background-color: $white;
-}
-</style>
