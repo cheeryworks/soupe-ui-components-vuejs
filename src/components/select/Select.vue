@@ -74,10 +74,6 @@ export default {
       default: false
     },
     customizedName: String,
-    border: {
-      type: Boolean,
-      default: true
-    },
     width: String,
     optionWidth: {
       type: String,
@@ -93,7 +89,6 @@ export default {
         return true
       }
     },
-    autoOpen: Boolean,
     closeOnClick: {
       type: Boolean,
       default: true
