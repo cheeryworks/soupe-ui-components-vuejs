@@ -22,7 +22,7 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@cheeryworks/soupe-ui-components-styles": "^1.0.0-alpha.4",
+    "@cheeryworks/soupe-ui-components-skeleton": "^1.0.0-alpha.4",
     "vue-i18n": "^8.24.2"
   },
   "devDependencies": {
@@ -40,7 +40,6 @@
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "vue": "^2.6.12",
-    "vue-cli-plugin-i18n": "^2.0.3",
     "vue-cookie": "^1.1.4",
     "vue-router": "^3.5.1",
     "vue-template-compiler": "^2.6.12"

@@ -5,7 +5,7 @@ Vue.use(VueI18n)
 
 function loadLocaleMessages() {
   const locales = require.context(
-    './locales',
+    '@cheeryworks/soupe-ui-components-skeleton/locales/demos/',
     true,
     /[A-Za-z0-9-_,\s]+\.json$/i
   )
@@ -23,7 +23,7 @@ function loadLocaleMessages() {
   })
 
   let componentLocales = require.context(
-    '../locales/',
+    '@cheeryworks/soupe-ui-components-skeleton/locales/components/',
     true,
     /[A-Za-z0-9-_,\s]+\.json$/i
   )
