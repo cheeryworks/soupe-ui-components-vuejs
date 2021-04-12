@@ -1,6 +1,6 @@
 {
   "name": "@cheeryworks/soupe-ui-components-vuejs",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "description": "Soupe UI Components (VueJs)",
   "author": "Carr Chang <carr.z.chang@outlook.com>",
   "license": "MIT",
@@ -22,8 +22,8 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@cheeryworks/soupe-ui-components-skeleton": "^1.0.0-alpha.4",
-    "vue-i18n": "^8.24.2"
+    "@cheeryworks/soupe-ui-components-skeleton": "^1.0.0-alpha.5",
+    "vue-i18n": "^8.24.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.12",

@@ -9,7 +9,7 @@ module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        additionalData: `@import "~@cheeryworks/soupe-ui-components-skeleton/sass/settings";`
+        additionalData: `@import "~@cheeryworks/soupe-ui-components-skeleton/src/sass/settings";`
       }
     }
   },
