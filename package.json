@@ -1,6 +1,6 @@
 {
   "name": "@cheeryworks/soupe-ui-components-vuejs",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Soupe UI Components (VueJs)",
   "author": "Carr Chang <carr.z.chang@outlook.com>",
   "license": "MIT",
@@ -46,7 +46,6 @@
   },
   "files": [
     "src/components",
-    "src/locales",
     "src/utils"
   ],
   "browserslist": {
