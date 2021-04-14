@@ -1,15 +1,12 @@
 <template>
   <div
-    :style="{ width: width }"
     @click="onItemClick"
     class="soupe-ui-wizard-item column columns is-vcentered is-gapless my-0"
   >
-    <slot>
-      <a :class="{ active: active }" class="column">{{ title }}</a>
-      <a class="column is-narrow" v-if="!isLast">
-        <i class="fas fa-angle-right"></i>
-      </a>
-    </slot>
+    <a :class="{ active: active }" class="column">{{ title }}</a>
+    <a class="column is-narrow" v-if="!isLast">
+      <i class="fas fa-angle-right"></i>
+    </a>
   </div>
 </template>
 
@@ -28,9 +25,6 @@ export default {
     isLast() {
       let parent = this.$parent
       return parent.items[parent.items.length - 1] === this
-    },
-    width() {
-      return this.$parent.itemWidth + 'px'
     },
     active() {
       if (this.$parent.items.length - 1 >= this.$parent.internalActive) {

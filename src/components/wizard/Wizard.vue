@@ -18,23 +18,11 @@ export default {
   data() {
     return {
       items: [],
-      internalActive: 0,
-      itemWidth: 100
+      internalActive: 0
     }
   },
   created() {
     this.internalActive = this.active
-  },
-  watch: {
-    items() {
-      let totalWidth = this.$el.clientWidth
-
-      if (this.items.length <= 4) {
-        this.itemWidth = totalWidth / 4
-      } else {
-        this.itemWidth = totalWidth / this.items.length
-      }
-    }
   },
   methods: {
     setActive(active) {
