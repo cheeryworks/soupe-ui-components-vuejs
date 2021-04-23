@@ -59,7 +59,7 @@
                       selectionConfigs &&
                         selectionConfigs.multipleSelect &&
                         fixedLeftColumns >= 1 &&
-                        i == 0
+                        i === 0
                     "
                 >
                   <table-header-cell>
@@ -594,12 +594,6 @@ export default {
         return []
       }
     },
-    fixedHeader: {
-      type: Boolean,
-      default() {
-        return true
-      }
-    },
     fixedLeftColumns: {
       type: Number,
       default() {
@@ -678,12 +672,6 @@ export default {
         return 20
       }
     },
-    count: {
-      type: Number,
-      default() {
-        return 0
-      }
-    },
     selectionConfigs: {
       type: Object,
       default() {
@@ -711,7 +699,6 @@ export default {
     return {
       bodyScrollLeft: 0,
       bodyScrollTop: 0,
-      bodyScrollableH: false,
       bodyScrollableV: false,
       columnsWidth: 0,
       autoColumns: 0,
@@ -845,9 +832,6 @@ export default {
 
       return 100
     },
-    bodyScrollable() {
-      return this.bodyScrollableV || this.bodyScrollableH
-    },
     startNumber() {
       if (this.total && this.total > 0) {
         return (this.page - 1) * this.size + 1
@@ -887,77 +871,22 @@ export default {
     },
     isWindows() {
       return navigator.platform.indexOf('Win') > -1
-    },
-    isIE() {
-      let ua = navigator.userAgent
-      let msie = ua.indexOf('MSIE ')
-      let trident = ua.indexOf('Trident/')
-
-      if (msie >= 0 || trident >= 0) {
-        return true
-      }
-
-      return false
     }
   },
   mounted() {
     let self = this
 
-    this.$el
+    self.$el
       .querySelector('.soupe-ui-table-body-center')
       .addEventListener('scroll', function(event) {
         self.bodyScrollLeft = event.target.scrollLeft
         self.bodyScrollTop = event.target.scrollTop
       })
 
-    if (
-      this.$el.querySelector('.soupe-ui-table-body-center table')
-        .clientWidth >
-      this.$el.querySelector('.soupe-ui-table-body-center').clientWidth - 2
-    ) {
-      self.bodyScrollableH = true
-    } else {
-      self.bodyScrollableH = false
-    }
-
-    if (
-      this.$el.querySelector('.soupe-ui-table-body-center table')
-        .clientHeight >
-      this.$el.querySelector('.soupe-ui-table-body-center').clientHeight - 2
-    ) {
-      self.bodyScrollableV = true
-    } else {
-      self.bodyScrollableV = false
-    }
-
-    this.widthOfBodyCenter = this.$el.querySelector(
-      '.soupe-ui-table-body-center'
-    ).clientWidth
+    self.updateLayout()
 
     window.addEventListener('resize', function() {
-      if (
-        self.$el.querySelector('.soupe-ui-table-body-center table')
-          .clientWidth >
-        self.$el.querySelector('.soupe-ui-table-body-center').clientWidth - 2
-      ) {
-        self.bodyScrollableH = true
-      } else {
-        self.bodyScrollableH = false
-      }
-
-      if (
-        self.$el.querySelector('.soupe-ui-table-body-center table')
-          .clientHeight >
-        self.$el.querySelector('.soupe-ui-table-body-center').clientHeight - 2
-      ) {
-        self.bodyScrollableV = true
-      } else {
-        self.bodyScrollableV = false
-      }
-
-      let bodyCenter = self.$el.querySelector('.soupe-ui-table-body-center')
-
-      this.widthOfBodyCenter = bodyCenter.clientWidth
+      self.updateLayout()
     })
 
     this.setAutoWidthOfColumn()
@@ -966,29 +895,7 @@ export default {
     let self = this
 
     this.$nextTick(() => {
-      if (
-        this.$el.querySelector('.soupe-ui-table-body-center table')
-          .clientWidth >
-        this.$el.querySelector('.soupe-ui-table-body-center').clientWidth - 2
-      ) {
-        self.bodyScrollableH = true
-      } else {
-        self.bodyScrollableH = false
-      }
-
-      if (
-        this.$el.querySelector('.soupe-ui-table-body-center table')
-          .clientHeight >
-        this.$el.querySelector('.soupe-ui-table-body-center').clientHeight - 2
-      ) {
-        self.bodyScrollableV = true
-      } else {
-        self.bodyScrollableV = false
-      }
-
-      let bodyCenter = this.$el.querySelector('.soupe-ui-table-body-center')
-
-      this.widthOfBodyCenter = bodyCenter.clientWidth
+      self.updateLayout()
     })
   },
   methods: {
@@ -1171,14 +1078,23 @@ export default {
         }
       }
 
-      if (
-        columnIndex === columns.length - 1 &&
-        lengthOfColumns === totalColumns
-      ) {
+      if (columnIndex === columns.length - 1 && lengthOfColumns === totalColumns) {
         return true
       }
 
       return false
+    },
+    updateLayout() {
+      const tableBodyCenter = this.$el.querySelector('.soupe-ui-table-body-center')
+      const tableBodyCenterTable = this.$el.querySelector('.soupe-ui-table-body-center table')
+
+      if (tableBodyCenterTable.clientHeight > tableBodyCenter.clientHeight - 2) {
+        self.bodyScrollableV = true
+      } else {
+        self.bodyScrollableV = false
+      }
+
+      this.widthOfBodyCenter = tableBodyCenter.clientWidth
     },
     changePageSize(pageSize) {
       if (this.paging && pageSize + '' !== this.size + '') {
