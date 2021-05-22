@@ -17,16 +17,20 @@
             :class="{ 'is-active': $route.matched[0].name === 'home' }"
             class="navbar-item"
             to="/"
-          >{{ $t('soupe.ui.demos.menus.home.title') }}
-          </router-link
           >
+            {{ $t('soupe.ui.demos.menus.home.title') }}
+          </router-link>
           <router-link
             :class="{ 'is-active': $route.matched[0].name === 'components' }"
             class="navbar-item"
             to="/components"
-          >{{ $t('soupe.ui.demos.menus.components.title') }}
-          </router-link
           >
+            {{ $t('soupe.ui.demos.menus.components.title') }}
+          </router-link>
+          <a class="navbar-item" href="https://github.com/cheeryworks/soupe-ui-components-vuejs">
+            GitHub
+            <img src="@/demos/assets/external-link-alt-solid.svg" class="external-link-icon"/>
+          </a>
         </div>
         <!-- <div class="navbar-end">
           <a
